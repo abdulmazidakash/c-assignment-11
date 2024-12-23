@@ -1,56 +1,55 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules"; // Import Autoplay module
+import "swiper/swiper-bundle.css";
 
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
+const images = [
+  "https://insiderrelease.com/wp-content/uploads/2024/09/Rosetta-Stone-1024x574.jpg",
+  "https://www.primeknowledgenet.com/wp-content/blogs.dir/1/uploads/sites/66/Historical-Curiosities-41-750x429.jpg",
+  "https://static.dw.com/image/60495947_401.jpg",
+  
+];
 
-// import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules'
-import Slide from './Slide'
-
-import bgimg1 from '../assets/images/carousel1.avif'
-import bgimg2 from '../assets/images/carousel2.jpg'
-import bgimg3 from '../assets/images/carousel3.jpg'
-
-export default function Carousel() {
+function CoverflowSlider() {
   return (
-    <div className='container px-6 py-10 mx-auto'>
+    <div className="container mx-auto my-8">
+      {" "}
+      {/* Set container to full width */}
       <Swiper
-        spaceBetween={30}
+        effect="coverflow"
+        grabCursor={true}
         centeredSlides={true}
-        loop={true}
+        slidesPerView="auto"
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
         autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
+          delay: 3000, // Change slide every 3 seconds
+          disableOnInteraction: false, // Continue autoplay after user interaction
         }}
         pagination={{
-          clickable: true,
+          clickable: true, // Makes the pagination dots clickable
         }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className='mySwiper'
-      >
-        <SwiperSlide>
-          <Slide
-            image={bgimg1}
-            text='Get Your Web Development Projects Done in minutes'
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Slide
-            image={bgimg2}
-            text='Get Your Graphics Design Projects Done in minutes'
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Slide
-            image={bgimg3}
-            text='Start Your Digital Marketing Campaigns up n running'
-          />
-        </SwiperSlide>
+        modules={[EffectCoverflow, Pagination, Autoplay]} // Add Autoplay module
+        className="w-full rounded-lg shadow-lg">
+        {" "}
+        {/* Set Swiper to full width */}
+        {images.map((src, index) => (
+          <SwiperSlide key={index} className="w-full">
+            <img
+              src={src}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-96 object-cover rounded-lg" // Use relative units for height
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
-  )
+  );
 }
+
+export default CoverflowSlider;

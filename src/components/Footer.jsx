@@ -47,7 +47,7 @@ const Footer = () => {
       </div>
     </nav>
     <aside>
-      <p>Copyright © {new Date().getFullYear()} - All right reserved by Historical Artifacts Tracker</p>
+      <p>Copyright © {new Date().getFullYear()} - All right reserved by Artifact Atlas</p>
     </aside>
     </div>
   </footer>

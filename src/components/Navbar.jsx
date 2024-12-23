@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   return (
-    <div className='navbar font-semibold bg-gradient-to-tr from-sky-900 to-fuchsia-900 text-white rounded-b-lg shadow-sm container px-4 mx-auto'>
+    <div className='navbar font-semibold bg-gradient-to-tr from-slate-950 to-rose-950 text-white rounded-b-lg shadow-sm container px-4 mx-auto'>
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
           <img className='w-auto h-7' src='{logo} 'alt='' />
-          <span className='font-bold'>Historical Artifacts Tracker</span>
+          <span className='font-bold text-2xl'>Artifact Atlas</span>
         </Link>
       </div>
       <div className='flex-none'>
@@ -18,10 +18,10 @@ const Navbar = () => {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='/jobs'>All Artifacts</Link>
+            <Link to='/all-artifacts'>All Artifacts</Link>
           </li>
           <li>
-            <Link to='/jobs'>Add Artifacts</Link>
+            <Link to='/add-artifacts'>Add Artifacts</Link>
           </li>
 
           {!user && (
@@ -48,26 +48,20 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black/100 text-white rounded-box w-52'
             >
               <li>
-                <Link to='/add-job' className='justify-between'>
-                  Add Job
+                <Link to='/my-artifacts' className='justify-between'>
+                  My Artifacts
                 </Link>
               </li>
               <li>
-                <Link to='/my-posted-jobs'>My Posted Jobs</Link>
-              </li>
-              <li>
-                <Link to='/my-bids'>My Bids</Link>
-              </li>
-              <li>
-                <Link to='/bid-requests'>Bid Requests</Link>
+                <Link to='/liked-artifacts'>Liked Artifacts</Link>
               </li>
               <li className='mt-2'>
                 <button
                   onClick={logOut}
-                  className='bg-gray-200 block text-center'
+                  className='bg-black/80 hover:bg-gray-700 hover:text-black text-white block text-center'
                 >
                   Logout
                 </button>

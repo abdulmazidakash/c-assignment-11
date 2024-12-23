@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom'
-// import bgImg from '../../assets/images/register.jpg'
-// import logo from '../../assets/images/logo.png'
+import registerLottie from '../../assets/lottie/register.json'
 import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
+import Lottie from 'lottie-react'
 
 const Registration = () => {
   const navigate = useNavigate()
@@ -46,12 +46,12 @@ const Registration = () => {
   }
 
   return (
-    <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
-      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
+    <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12 border-2 container mx-auto rounded-lg border-gray-100'>
+  
+      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg   lg:max-w-4xl'>
+     
         <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
-          <div className='flex justify-center mx-auto'>
-            <img className='w-auto h-7 sm:h-8' src='' alt='' />
-          </div>
+  
 
           <p className='mt-3 text-xl text-center text-gray-600 '>
             Get Your Free Account Now.
@@ -164,7 +164,7 @@ const Registration = () => {
             <div className='mt-6'>
               <button
                 type='submit'
-                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
+                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gradient-to-bl from-slate-950 to-rose-950 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
               >
                 Sign Up
               </button>
@@ -185,11 +185,11 @@ const Registration = () => {
           </div>
         </div>
         <div
-          className='hidden bg-cover bg-center lg:block lg:w-1/2'
-          style={{
-            backgroundImage: ``,
-          }}
-        ></div>
+          className='hidden mt-24 bg-cover bg-center lg:block lg:w-1/2 justify-center items-center'
+        
+        >
+          <Lottie animationData={registerLottie}></Lottie>
+        </div>
       </div>
     </div>
   )

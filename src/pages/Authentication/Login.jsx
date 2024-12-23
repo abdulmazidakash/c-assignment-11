@@ -1,9 +1,9 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-// import bgImg from '../../assets/images/login.jpg'
-// import logo from '../../assets/images/logo.png'
+import loginLottie from '../../assets/lottie/login.json'
 import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
+import Lottie from 'lottie-react'
 // import axios from 'axios'
 const Login = () => {
   const navigate = useNavigate()
@@ -48,14 +48,14 @@ const Login = () => {
   }
 
   return (
-    <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
-      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
+    <div className='flex items-center min-h-[calc(100vh-306px)] my-12 container border-2 border-gray-100 mx-auto rounded-lg'>
+      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg   lg:max-w-4xl '>
         <div
-          className='hidden bg-cover bg-center lg:block lg:w-1/2'
-          style={{
-            backgroundImage: ``,
-          }}
-        ></div>
+          className='hidden bg-cover bg-center lg:block lg:w-1/2 mt-24'
+          
+        >
+          <Lottie animationData={loginLottie}></Lottie>
+        </div>
 
         <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
           <div className='flex justify-center mx-auto'>
@@ -143,7 +143,7 @@ const Login = () => {
             <div className='mt-6'>
               <button
                 type='submit'
-                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
+                className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gradient-to-bl from-slate-950 to-rose-950 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
               >
                 Sign In
               </button>
@@ -154,7 +154,7 @@ const Login = () => {
             <span className='w-1/5 border-b  md:w-1/4'></span>
 
             <Link
-              to='/registration'
+              to='/register'
               className='text-xs text-gray-500 uppercase  hover:underline'
             >
               or sign up
