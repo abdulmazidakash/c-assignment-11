@@ -4,17 +4,12 @@ import Lottie from 'lottie-react'
 
 const ErrorPage = () => {
   return (
-    <section className='bg-white '>
-      <div className='container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12'>
- 
-        <div className='mt-8  lg:mt-0'>
-    
-          <Lottie animationData={errorLottie}></Lottie>
+    <section className='bg-white container mx-auto mt-16 border-2 border-gray-100 rounded-lg p-4'>
+        <div className=' w-96 mx-auto'>
+          <Lottie  animationData={errorLottie}></Lottie>
         </div>
-        
-      </div>
       <div className='flex mt-6 gap-x-3 justify-center'>
-            <button className='flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 sm:w-auto hover:bg-gray-100 '>
+            <button className='flex btn-outline items-center justify-center  px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2 btn hover:text-black'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -35,13 +30,11 @@ const ErrorPage = () => {
 
             <Link
               to='/'
-              className='w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-gray-500 rounded-lg shrink-0 sm:w-auto hover:bg-gray-600'
+              className='px-5 py-2 text-sm btn  tracking-wide text-white transition-colors duration-200 bg-gradient-to-br from-gray-950 to-rose-950 rounded-lg shrink-0  hover:bg-gray-600'
             >
               Take me home
             </Link>
           </div>
-
-
     </section>
   )
 }

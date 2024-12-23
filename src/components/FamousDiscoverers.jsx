@@ -4,17 +4,17 @@ function FamousDiscoverers() {
 	  {
 		name: "Howard Carter",
 		achievement: "Discovered Tutankhamun's tomb in 1922.",
-		image: "https://live.staticflickr.com/4397/36759875345_445270b7fa.jpg/150", // Replace with real image
+		image: "https://live.staticflickr.com/4397/36759875345_445270b7fa.jpg/150", 
 	  },
 	  {
 		name: "Jean-François Champollion",
 		achievement: "Deciphered Egyptian hieroglyphs in 1822.",
-		image: "https://www.thelancet.com/cms/10.1016/S0140-6736(12)60750-8/asset/fc0d8a98-827c-49e3-b6ba-7c39f862266f/main.assets/fx1.jpg/150", // Replace with real image
+		image: "https://www.thelancet.com/cms/10.1016/S0140-6736(12)60750-8/asset/fc0d8a98-827c-49e3-b6ba-7c39f862266f/main.assets/fx1.jpg/150", 
 	  },
 	  {
 		name: "Mary Leakey",
 		achievement: "Found early hominin fossils in Africa.",
-		image: "https://hips.hearstapps.com/hmg-prod/images/dame-maggie-smith-attends-the-65th-evening-standard-theatre-news-photo-1719502004.jpg?crop=0.790xw:0.569xh;0.104xw,0.0480xh&resize=360:*/150", // Replace with real image
+		image: "https://hips.hearstapps.com/hmg-prod/images/dame-maggie-smith-attends-the-65th-evening-standard-theatre-news-photo-1719502004.jpg?crop=0.790xw:0.569xh;0.104xw,0.0480xh&resize=360:*/150", 
 	  },
 	];
   
