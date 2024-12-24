@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 // import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 function MyArtifacts() {
 	const {user} = useContext(AuthContext);
@@ -23,6 +24,40 @@ function MyArtifacts() {
 		setLoading(false); // Ensure loading is updated
 	  }
 	};  
+	const handleDelete = async (id) => {
+		try {
+		  const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/artifact/${id}`);
+		  console.log(data);
+		  toast.success('Deleted Successfully');
+		  // Optionally, remove the artifact from the state
+		  setArtifacts((prevArtifacts) => prevArtifacts.filter((artifact) => artifact._id !== id));
+		} catch (err) {
+		  console.error(err.message);
+		  toast.error('Something went wrong', err);
+		}
+	  };
+
+	  const modernDelete = id =>{
+		toast(t => (
+		  <div className='flex gap-3 items-center'>
+			  <div>
+				<p>Are you <b>sure</b></p>
+			  </div>
+			  <div className='gap-2 flex'>
+				<button
+				className='bg-red-400 text-white px-3 py-1 rounded-md'
+				onClick={()=> {
+				  handleDelete(id)
+				  toast.dismiss(t.id)
+				}}> Yes</button>
+				<button
+				className='bg-green-400 text-white px-3 py-1 rounded-md'
+				 onClick={()=> toast.dismiss(t.id)}>Cancel</button>
+			  </div>
+		  </div>
+		))
+	  }
+	  
 
 
   return (
@@ -54,14 +89,14 @@ function MyArtifacts() {
                 {/* Update Button */}
                 <Link
                   to={`/artifacts/update/${artifact._id}`}
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-500 hover:underline btn-success"
                 >
                   Update
                 </Link>
                 {/* Delete Button */}
                 <button
-                  onClick={() => deleteArtifact(artifact._id)}
-                  className="text-red-500 hover:underline"
+                  onClick={() => modernDelete(artifact._id)}
+                  className="text-red-500 hover:underline btn-error"
                 >
                   Delete
                 </button>
