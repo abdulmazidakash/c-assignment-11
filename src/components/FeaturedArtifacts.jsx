@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
-function AllArtifacts() {
+function FeaturedArtifacts() {
   const [artifacts, setArtifacts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -13,8 +13,13 @@ function AllArtifacts() {
 
   const fetchAllArtifacts = async () => {
     try {
+      console.log("Fetching artifacts...");
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/artifacts`);
-      setArtifacts(data);
+      console.log("Fetched artifacts:", data);
+      
+      // Sort by likes and select the top 6
+      const sortedArtifacts = data.sort((a, b) => b.likes - a.likes).slice(0, 6);
+      setArtifacts(sortedArtifacts);
     } catch (error) {
       console.error("Error fetching artifacts:", error);
     } finally {
@@ -22,13 +27,11 @@ function AllArtifacts() {
     }
   };
 
-  console.log(artifacts);
-
   return (
     <div className="container mx-auto p-6">
       <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
 					<Typewriter
-					words={['All Artifacts!']}
+					words={['Featured Artifact!']}
 					cursor
 					cursorStyle={'|'}
 					loop={Infinity}
@@ -40,7 +43,7 @@ function AllArtifacts() {
 				</h2>
 
       {loading ? (
-        <div className="text-center">Loading...</div>
+        <div className="text-center">Loading featured artifacts...</div>
       ) : artifacts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {artifacts.map((artifact) => (
@@ -54,9 +57,7 @@ function AllArtifacts() {
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
               <h3 className="text-xl font-semibold mb-2">{artifact.name}</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                {artifact.context ? artifact.context.substring(0, 100) : "No description available"}...
-              </p>
+              <p className="text-sm text-gray-600 mb-4">Likes: {artifact.likes}</p>
               <div className="text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}
@@ -69,10 +70,10 @@ function AllArtifacts() {
           ))}
         </div>
       ) : (
-        <div className="text-center text-gray-500">No artifacts found.</div>
+        <div className="text-center text-gray-500">No featured artifacts found.</div>
       )}
     </div>
   );
 }
 
-export default AllArtifacts;
+export default FeaturedArtifacts;

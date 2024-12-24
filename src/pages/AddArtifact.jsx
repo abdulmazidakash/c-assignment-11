@@ -2,69 +2,125 @@ import { useState, useEffect, useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import { Typewriter } from "react-simple-typewriter";
+import { data } from "react-router-dom";
+import axios from "axios";
 
 function AddArtifact() {
 
   const {user} = useContext(AuthContext);
-  console.log(user);
-  const [formData, setFormData] = useState({
-    name: "",     
-    image: "",
-    type: "Tools",
-    context: "",
-    createdAt: "",
-    discoveredAt: "",
-    discoveredBy: "",
-    location: "",
-    adderName: "",
-    adderEmail: "",
-  });
+  // console.log(user);
+  // const [formData, setFormData] = useState({
+  //   name: "",     
+  //   image: "",
+  //   type: "Tools",
+  //   context: "",
+  //   createdAt: "",
+  //   discoveredAt: "",
+  //   discoveredBy: "",
+  //   location: "",
+  //   adderName: "",
+  //   adderEmail: "",
+  // });
+
+  // console.log(formData);
 
 
-  useEffect(() => {
-    // Set logged-in user's name and email in form data
-    setFormData((prevData) => ({
-      ...prevData,
-      adderName: user?.displayName,
-      adderEmail: user?.email,
-    }));
-  }, [user]);
+  // useEffect(() => {
+  //   // Set logged-in user's name and email in form data
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     adderName: user?.displayName,
+  //     adderEmail: user?.email,
+  //   }));
+  // }, [user]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
 
-  };
+  // };
 
-  const handleSubmit = async (e) => {
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   // Validate inputs
+  //   if (!formData.name || !formData.image || !formData.context) {
+  //     toast.error("Please fill all the required fields.");
+  //     return;
+  //   }
+
+  //   try {
+  //     // Simulate API call
+  //     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated delay
+  //     toast.success("Artifact added successfully!");
+  //     setFormData({
+  //       name: "",
+  //       image: "",
+  //       type: "Tools",
+  //       context: "",
+  //       createdAt: "",
+  //       discoveredAt: "",
+  //       discoveredBy: "",
+  //       location: "",
+  //       adderName: user?.displayName,
+  //       adderEmail: user?.email,
+  //     });
+  //     // console.log(formData);
+  //   } catch (error) {
+  //     toast.error("Failed to add artifact. Try again.");
+  //   }
+  // };
+
+  const handleSubmit = async e =>{
     e.preventDefault();
 
-    // Validate inputs
-    if (!formData.name || !formData.image || !formData.context) {
-      toast.error("Please fill all the required fields.");
-      return;
+    const form = e.target;
+    const name = form.name.value;
+    const image = form.image.value;
+    const type = form.type.value;
+    const context = form.context.value;
+    const createdAt = form.createdAt.value;
+    const discoveredAt = form.discoveredAt.value;
+    const location = form.location.value;
+    const adderName = form.adderName.value;
+    const adderEmail = form.adderEmail.value;
+
+    const formData ={
+      name,
+      image,
+      type,
+      context,
+      createdAt,
+      discoveredAt,
+      location,
+      adderName,
+      adderEmail,
+      like_count: 0,
     }
 
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated delay
-      toast.success("Artifact added successfully!");
-      setFormData({
-        name: "",
-        image: "",
-        type: "Tools",
-        context: "",
-        createdAt: "",
-        discoveredAt: "",
-        discoveredBy: "",
-        location: "",
-        adderName: user?.displayName,
-        adderEmail: user?.email,
-      });
-    } catch (error) {
-      toast.error("Failed to add artifact. Try again.");
+    console.log(formData);
+
+    try{
+        //  1. make a post request 
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/add-artifact`, formData)
+        console.log(data);
+
+        //2. reset form 
+        form.reset()
+
+        //3. show toast and navigate
+        toast.success('Data added successfully')
+        // navigate('/my-posted-jobs')
+    }catch (err){
+      console.log(err);
+      toast.error(err.message)
     }
-  };
+
+    // console.log(data);
+
+
+  }
+
 
   return (
     <div className="container mx-auto p-6">
@@ -90,8 +146,8 @@ function AddArtifact() {
           <input
             type="text"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
+     
+          
             className="w-full border px-4 py-2 rounded"
             placeholder="Enter artifact name"
           />
@@ -103,8 +159,8 @@ function AddArtifact() {
           <input
             type="url"
             name="image"
-            value={formData.image}
-            onChange={handleChange}
+     
+           
             className="w-full border px-4 py-2 rounded"
             placeholder="Enter valid image URL"
           />
@@ -115,8 +171,8 @@ function AddArtifact() {
           <label className="block font-bold mb-2">Artifact Type</label>
           <select
             name="type"
-            value={formData.type}
-            onChange={handleChange}
+    
+        
             className="w-full border px-4 py-2 rounded"
           >
             <option value="Tools">Tools</option>
@@ -131,8 +187,8 @@ function AddArtifact() {
           <label className="block font-bold mb-2">Historical Context</label>
           <textarea
             name="context"
-            value={formData.context}
-            onChange={handleChange}
+      
+         
             className="w-full border px-4 py-2 rounded"
             placeholder="Enter historical background"
             rows="4"
@@ -146,8 +202,8 @@ function AddArtifact() {
             <input
               type="text"
               name="createdAt"
-              value={formData.createdAt}
-              onChange={handleChange}
+           
+             
               className="w-full border px-4 py-2 rounded"
               placeholder="e.g., 100 BC"
             />
@@ -157,8 +213,8 @@ function AddArtifact() {
             <input
               type="text"
               name="discoveredAt"
-              value={formData.discoveredAt}
-              onChange={handleChange}
+            
+             
               className="w-full border px-4 py-2 rounded"
               placeholder="e.g., 1799"
             />
@@ -171,8 +227,8 @@ function AddArtifact() {
           <input
             type="text"
             name="discoveredBy"
-            value={formData.discoveredBy}
-            onChange={handleChange}
+           
+    
             className="w-full border px-4 py-2 rounded"
             placeholder="Enter discoverer's name"
           />
@@ -184,8 +240,8 @@ function AddArtifact() {
           <input
             type="text"
             name="location"
-            value={formData.location}
-            onChange={handleChange}
+         
+          
             className="w-full border px-4 py-2 rounded"
             placeholder="Enter artifact's location"
           />
@@ -197,7 +253,9 @@ function AddArtifact() {
           <input
             type="text"
             name="adderName"
-            value={formData.adderName}
+            defaultValue={user?.displayName}
+
+          
             readOnly
             className="w-full border px-4 py-2 rounded bg-gray-200"
           />
@@ -207,7 +265,9 @@ function AddArtifact() {
           <input
             type="email"
             name="adderEmail"
-            value={formData.adderEmail}
+
+            defaultValue={user?.email}
+       
             readOnly
             className="w-full border px-4 py-2 rounded bg-gray-200"
           />

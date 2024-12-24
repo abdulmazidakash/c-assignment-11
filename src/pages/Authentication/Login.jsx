@@ -6,11 +6,12 @@ import toast from 'react-hot-toast'
 import Lottie from 'lottie-react'
 // import axios from 'axios'
 const Login = () => {
+
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state || '/'
   console.log(from)
-  const { signIn, signInWithGoogle } = useContext(AuthContext)
+  const { signIn, signInWithGoogle, user } = useContext(AuthContext)
 
   // Google Signin
   const handleGoogleSignIn = async () => {
@@ -21,7 +22,7 @@ const Login = () => {
       // const data = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email})
       // console.log(data.data);
 
-      toast.success('Signin Successful')
+      toast.success(`SignIn Successful ${user?.displayName}`)
       navigate(from, { replace: true })
     } catch (err) {
       console.log(err)

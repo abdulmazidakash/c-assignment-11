@@ -32,6 +32,14 @@ const router = createBrowserRouter([
 			{
 				path: '/all-artifacts',
 				element: <AllArtifacts></AllArtifacts>,
+			},
+			{
+				path: '/my-artifacts',
+				element: <h2>My Artifacts</h2>,
+			},
+			{
+				path: '/liked-artifacts',
+				element: <h2>Liked Artifacts</h2>
 			}
 		]
 	}
