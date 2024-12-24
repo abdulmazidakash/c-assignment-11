@@ -19,6 +19,7 @@ function AddArtifact() {
     const context = form.context.value;
     const createdAt = form.createdAt.value;
     const discoveredAt = form.discoveredAt.value;
+    const discoveredBy = form.discoveredBy.value;
     const location = form.location.value;
     const adderName = form.adderName.value;
     const adderEmail = form.adderEmail.value;
@@ -30,6 +31,7 @@ function AddArtifact() {
       context,
       createdAt,
       discoveredAt,
+      discoveredBy,
       location,
       adderName,
       adderEmail,

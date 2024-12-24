@@ -88,7 +88,7 @@ function MyArtifacts() {
               <div className="flex justify-between items-center">
                 {/* Update Button */}
                 <Link
-                  to={`/artifacts/update/${artifact._id}`}
+                  to={`/update/${artifact._id}`}
                   className="text-blue-500 hover:underline btn-success"
                 >
                   Update
