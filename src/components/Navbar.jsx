@@ -21,7 +21,7 @@ const Navbar = () => {
             <Link to='/all-artifacts'>All Artifacts</Link>
           </li>
           <li>
-            <Link to='/add-artifacts'>Add Artifacts</Link>
+            <Link to='/add-artifact'>Add Artifacts</Link>
           </li>
 
           {!user && (
