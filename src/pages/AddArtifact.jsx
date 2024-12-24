@@ -8,68 +8,6 @@ import axios from "axios";
 function AddArtifact() {
 
   const {user} = useContext(AuthContext);
-  // console.log(user);
-  // const [formData, setFormData] = useState({
-  //   name: "",     
-  //   image: "",
-  //   type: "Tools",
-  //   context: "",
-  //   createdAt: "",
-  //   discoveredAt: "",
-  //   discoveredBy: "",
-  //   location: "",
-  //   adderName: "",
-  //   adderEmail: "",
-  // });
-
-  // console.log(formData);
-
-
-  // useEffect(() => {
-  //   // Set logged-in user's name and email in form data
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     adderName: user?.displayName,
-  //     adderEmail: user?.email,
-  //   }));
-  // }, [user]);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   // Validate inputs
-  //   if (!formData.name || !formData.image || !formData.context) {
-  //     toast.error("Please fill all the required fields.");
-  //     return;
-  //   }
-
-  //   try {
-  //     // Simulate API call
-  //     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated delay
-  //     toast.success("Artifact added successfully!");
-  //     setFormData({
-  //       name: "",
-  //       image: "",
-  //       type: "Tools",
-  //       context: "",
-  //       createdAt: "",
-  //       discoveredAt: "",
-  //       discoveredBy: "",
-  //       location: "",
-  //       adderName: user?.displayName,
-  //       adderEmail: user?.email,
-  //     });
-  //     // console.log(formData);
-  //   } catch (error) {
-  //     toast.error("Failed to add artifact. Try again.");
-  //   }
-  // };
 
   const handleSubmit = async e =>{
     e.preventDefault();
