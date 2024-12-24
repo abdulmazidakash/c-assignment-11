@@ -60,7 +60,7 @@ function AllArtifacts() {
               <div className="text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-500 hover:underline btn"
                 >
                   View Details
                 </Link>
