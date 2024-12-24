@@ -119,6 +119,9 @@ function AddArtifact() {
             <option value="Weapons">Weapons</option>
             <option value="Documents">Documents</option>
             <option value="Writings">Writings</option>
+            <option value="Sculptures">Sculptures</option>
+            <option value="Paintings">Paintings</option>
+            <option value="Relics">Relics</option>
           </select>
         </div>
 

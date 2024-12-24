@@ -49,7 +49,7 @@ function ArtifactDetails() {
         <img
           src={artifact.image}
           alt={artifact.name}
-          className="w-full h-64 object-cover"
+          className="w-full h-96 object-cover"
         />
         <div className="p-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">{artifact.name}</h1>
@@ -82,10 +82,10 @@ function ArtifactDetails() {
             </div>
           </div>
 
-          <div className="flex justify-between items-center mt-6">
+          <div className="flex justify-between  items-center mt-6 flex-row-reverse">
             <button
               onClick={() => handleLike()}
-              className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+              className="bg-blue-500 btn  text-white px-6 py-2 rounded hover:bg-blue-600"
             >
               Like Artifact
             </button>

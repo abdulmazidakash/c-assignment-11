@@ -27,6 +27,8 @@ function FeaturedArtifacts() {
     }
   };
 
+  console.log(artifacts);
+
   return (
     <div className="container mx-auto p-6">
       <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
@@ -57,7 +59,8 @@ function FeaturedArtifacts() {
                 className="w-full h-48 object-cover rounded-md mb-4"
               />
               <h3 className="text-xl font-semibold mb-2">{artifact.name}</h3>
-              <p className="text-sm text-gray-600 mb-4">Likes: {artifact.likes}</p>
+              <p className="text-md text-gray-600 mb-4">{artifact.context}</p>
+              <p className="text-sm text-gray-600 mb-4">Likes: {artifact.likes} 0</p>
               <div className="text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}

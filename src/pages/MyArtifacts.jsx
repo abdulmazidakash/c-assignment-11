@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { Typewriter } from "react-simple-typewriter";
 
 function MyArtifacts() {
 	const {user} = useContext(AuthContext);
@@ -62,7 +63,18 @@ function MyArtifacts() {
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-6">My Artifacts: {artifacts.length}</h2>
+      <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
+              <Typewriter
+              words={['My Artifacts!']}
+              cursor
+              cursorStyle={'|'}
+              loop={Infinity}
+              typeSpeed={70}
+              delaySpeed={1000}
+              deleteSpeed={50}
+      
+              ></Typewriter>
+            </h2>
 
       {/* Show Loading Spinner */}
       {loading ? (
