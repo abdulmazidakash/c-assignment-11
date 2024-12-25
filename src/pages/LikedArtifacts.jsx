@@ -4,8 +4,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+
 
 const LikedArtifacts = () => {
+  const axiosSecure = useAxiosSecure();
 	const {user} = useContext(AuthContext);
 	const [artifacts, setArtifacts] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -16,7 +19,7 @@ const LikedArtifacts = () => {
   
 	const fetchAllArtifacts = async () => {
 	  try {
-		const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/liked/${user?.email}`);
+		const { data } = await axiosSecure.get(`/liked/${user?.email}`);
 		setArtifacts(data);
 	  } catch (error) {
 		console.error("Error fetching artifacts:", error);
@@ -27,7 +30,7 @@ const LikedArtifacts = () => {
 
   const handleUnlike = async (artifactId) => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/unlike`, { id: artifactId }); // Adjust endpoint and payload
+      await axiosSecure.post(`/unlike`, { id: artifactId }); // Adjust endpoint and payload
       setArtifacts((prev) =>
         prev.filter((artifact) => artifact.id !== artifactId)
       );

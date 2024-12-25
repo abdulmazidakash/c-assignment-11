@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
-// import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { Typewriter } from "react-simple-typewriter";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function MyArtifacts() {
+  const axiosSecure = useAxiosSecure();
 	const {user} = useContext(AuthContext);
 	const [artifacts, setArtifacts] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -18,17 +18,17 @@ function MyArtifacts() {
   
 	const fetchAllArtifacts = async () => {
 	  try {
-		const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/artifacts/${user?.email}`);
+		const { data } = await axiosSecure.get(`/artifacts/${user?.email}`);
 		setArtifacts(data);
 	  } catch (error) {
 		console.error("Error fetching artifacts:", error);
 	  } finally {
-		setLoading(false); // Ensure loading is updated
+		setLoading(false); 
 	  }
 	};  
 	const handleDelete = async (id) => {
 		try {
-		  const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/artifact/${id}`);
+		  const { data } = await axiosSecure.delete(`/artifact/${id}`);
 		  console.log(data);
 		  toast.success('Deleted Successfully');
 		  // Optionally, remove the artifact from the state

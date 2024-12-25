@@ -1,13 +1,15 @@
-import axios from "axios";
+
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 function UpdateArtifactCard() {
  
+	const axiosSecure = useAxiosSecure();
 	const [artifact, setArtifact] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const {id} = useParams();
@@ -19,7 +21,7 @@ function UpdateArtifactCard() {
   
 	const fetchArtifactData = async () => {
 	  try {
-		const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/artifact/${id}`);
+		const { data } = await axiosSecure.get(`/artifact/${id}`);
 		setArtifact(data);
 	  } catch (error) {
 		console.error("Error fetching artifacts:", error);
@@ -59,7 +61,7 @@ function UpdateArtifactCard() {
 	
 		try{
 			//  1. make a post request 
-			const {data} = await axios.put(`${import.meta.env.VITE_API_URL}/update-artifact/${id}`, formData)
+			const {data} = await axiosSecure.put(`/update-artifact/${id}`, formData)
 			console.log(data);
 	
 			//2. reset form 

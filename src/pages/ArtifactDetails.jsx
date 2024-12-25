@@ -6,8 +6,10 @@ import toast from "react-hot-toast";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { AuthContext } from "../providers/AuthProvider";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function ArtifactDetails() {
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const {user} = useContext(AuthContext);
   const [artifact, setArtifact] = useState(null);
@@ -21,13 +23,13 @@ function ArtifactDetails() {
 
   const fetchArtifactDetails = async () => {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/artifact/${id}`
+      const { data } = await axiosSecure.get(
+        `/artifact/${id}`
       );
     
       setArtifact(data);
       setLikeCount(data.like_count);
-      setIsLiked(data.isLiked || false); // যদি `isLiked` ফিল্ড থাকে সেট করুন
+      setIsLiked(data.isLiked || false); 
     } catch (error) {
       console.error("Error fetching artifact details:", error);
       toast.error("Failed to load artifact details.");
@@ -45,9 +47,9 @@ function ArtifactDetails() {
         newLikeState ? prevCount + 1 : prevCount - 1
       );
 
-      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/add-like`,
+      const { data } = await axiosSecure.post(`/add-like`,
         {
-          artifactId: id, // artifactId পাঠানো হচ্ছে
+          artifactId: id, 
           liked: newLikeState,
           artifact,
           email: user?.email,

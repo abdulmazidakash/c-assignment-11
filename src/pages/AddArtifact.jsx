@@ -5,9 +5,11 @@ import { Typewriter } from "react-simple-typewriter";
 import { data } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function AddArtifact() {
 
+  const axiosSecure = useAxiosSecure();
   const {user} = useContext(AuthContext);
 
   const handleSubmit = async e =>{
@@ -43,7 +45,7 @@ function AddArtifact() {
 
     try{
         //  1. make a post request 
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/add-artifact`, formData)
+        const {data} = await axiosSecure.post(`/add-artifact`, formData)
         console.log(data);
 
         //2. reset form 
@@ -56,9 +58,6 @@ function AddArtifact() {
       console.log(err);
       toast.error(err.message)
     }
-
-    // console.log(data);
-
 
   }
 
