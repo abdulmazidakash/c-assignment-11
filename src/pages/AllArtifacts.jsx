@@ -7,25 +7,24 @@ import { Typewriter } from "react-simple-typewriter";
 function AllArtifacts() {
   const [artifacts, setArtifacts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
-    fetchAllArtifacts();
-  }, []);
+    const fetchAllArtifacts = async () => {
+      try {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/artifacts?search=${search}`);
+        setArtifacts(data);
+      } catch (error) {
+        console.error("Error fetching artifacts:", error);
+      } finally {
+        setLoading(false); // Ensure loading is updated
+      }
 
-  const fetchAllArtifacts = async () => {
-    try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/artifacts`);
-      setArtifacts(data);
-    } catch (error) {
-      console.error("Error fetching artifacts:", error);
-    } finally {
-      setLoading(false); // Ensure loading is updated
-    }
-  };
+    };
+    fetchAllArtifacts();
+  }, [search]);
 
   console.log(artifacts);
-
-  
 
   return (
     <div className="container mx-auto p-6">
@@ -44,6 +43,20 @@ function AllArtifacts() {
 	  
 					></Typewriter>
 				</h2>
+
+        <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search by artifact name"
+          name="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <button className="btn btn-primary ml-2">
+          Search
+        </button>
+      </div>
 
       {loading ? (
         <div className='flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]'><span className="loading loading-spinner text-error w-14"></span>loading.......</div>
