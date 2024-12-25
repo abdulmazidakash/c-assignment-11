@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -77,6 +78,9 @@ function UpdateArtifactCard() {
 	  }
   return (
     <div className="container mx-auto p-6">
+		<Helmet>
+			<title>Update Artifacts | Artifact Atlas</title>
+		</Helmet>
 		  <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
 					<Typewriter
 					words={['Update Artifact!']}

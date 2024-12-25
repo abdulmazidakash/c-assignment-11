@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
 import errorLottie from '../assets/lottie/errorPage.json'
 import Lottie from 'lottie-react'
+import { Helmet } from 'react-helmet'
 
 const ErrorPage = () => {
   return (
     <section className='bg-white container mx-auto mt-16 border-2 border-gray-100 rounded-lg p-4'>
+       <Helmet>
+        <title>404 Not Found | Artifact Atlas</title>
+       </Helmet>
         <div className=' w-96 mx-auto'>
           <Lottie  animationData={errorLottie}></Lottie>
         </div>

@@ -45,7 +45,7 @@ function FeaturedArtifacts() {
 				</h2>
 
       {loading ? (
-        <div className="text-center">Loading featured artifacts...</div>
+        <div className='flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]'><span className="loading loading-spinner text-error w-14"></span>loading.......</div>
       ) : artifacts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {artifacts.map((artifact) => (
@@ -64,7 +64,7 @@ function FeaturedArtifacts() {
               <div className="text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-500 hover:underline btn"
                 >
                   View Details
                 </Link>

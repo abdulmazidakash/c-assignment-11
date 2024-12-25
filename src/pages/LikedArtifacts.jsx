@@ -3,6 +3,7 @@ import { AiFillHeart } from "react-icons/ai"; // React Icon
 import axios from "axios";
 import toast from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const LikedArtifacts = () => {
 	const {user} = useContext(AuthContext);
@@ -39,12 +40,7 @@ const LikedArtifacts = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-center">
-          <div className="loading loading-spinner loading-lg mb-4"></div>
-          <p className="text-lg font-semibold"><span className="loading loading-spinner text-error"></span></p>
-        </div>
-      </div>
+		<div className='flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]'><span className="loading loading-spinner text-error w-14"></span>loading.......</div>
     );
   }
 
@@ -60,6 +56,9 @@ const LikedArtifacts = () => {
 
   return (
     <div className="container mx-auto p-6">
+      <Helmet>
+        <title>Liked Artifacts | Artifact Atlas</title>
+      </Helmet>
       <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Liked Artifacts</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {artifacts.map((artifact) => (

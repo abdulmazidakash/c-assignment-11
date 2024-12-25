@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
 import Lottie from 'lottie-react'
+import { Helmet } from 'react-helmet'
 // import axios from 'axios'
 const Login = () => {
 
@@ -50,6 +51,9 @@ const Login = () => {
 
   return (
     <div className='flex items-center min-h-[calc(100vh-306px)] my-12 container border-2 border-gray-100 mx-auto rounded-lg'>
+      <Helmet>
+        <title>Login | Artifact Atlas</title>
+      </Helmet>
       <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg   lg:max-w-4xl '>
         <div
           className='hidden bg-cover bg-center lg:block lg:w-1/2 mt-24'

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -24,8 +25,13 @@ function AllArtifacts() {
 
   console.log(artifacts);
 
+  
+
   return (
     <div className="container mx-auto p-6">
+    <Helmet>
+        <title>All Artifact | Artifact Atlas</title>
+      </Helmet>
       <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
 					<Typewriter
 					words={['All Artifacts!']}
@@ -40,7 +46,7 @@ function AllArtifacts() {
 				</h2>
 
       {loading ? (
-        <div className="text-center">Loading...</div>
+        <div className='flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]'><span className="loading loading-spinner text-error w-14"></span>loading.......</div>
       ) : artifacts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {artifacts.map((artifact) => (

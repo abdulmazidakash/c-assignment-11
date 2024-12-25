@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { AuthContext } from "../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 function ArtifactDetails() {
   const { id } = useParams();
@@ -66,12 +67,7 @@ function ArtifactDetails() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-center">
-          <div className="loader mb-4"></div>
-          <p className="text-lg font-semibold"><span className="loading loading-spinner text-error"></span></p>
-        </div>
-      </div>
+      <div className='flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]'><span className="loading loading-spinner text-error w-14"></span>loading.......</div>
     );
   }
 
@@ -85,6 +81,9 @@ function ArtifactDetails() {
 
   return (
     <div className="container mx-auto p-6">
+      <Helmet>
+        <title>{artifact.name} | Artifact Atlas</title>
+      </Helmet>
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
         <img
           src={artifact.image}

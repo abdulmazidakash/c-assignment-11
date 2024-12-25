@@ -4,6 +4,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { Typewriter } from "react-simple-typewriter";
 import { data } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 function AddArtifact() {
 
@@ -64,6 +65,9 @@ function AddArtifact() {
 
   return (
     <div className="container mx-auto p-6">
+      <Helmet>
+        <title>Add Artifact | Artifact Atlas</title>
+      </Helmet>
       <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
 				<Typewriter
 				words={['Add a new Artifact!']}

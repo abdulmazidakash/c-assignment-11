@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
 import Lottie from 'lottie-react'
+import { Helmet } from 'react-helmet'
 
 const Registration = () => {
   const navigate = useNavigate()
@@ -47,7 +48,9 @@ const Registration = () => {
 
   return (
     <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12 border-2 container mx-auto rounded-lg border-gray-100'>
-  
+      <Helmet>
+        <title>Register | Artifact Atlas</title>
+      </Helmet>
       <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg   lg:max-w-4xl'>
      
         <div className='w-full px-6 py-8 md:px-8 lg:w-1/2'>
