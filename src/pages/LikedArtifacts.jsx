@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Typewriter } from "react-simple-typewriter";
 
 
 const LikedArtifacts = () => {
@@ -62,7 +63,18 @@ const LikedArtifacts = () => {
       <Helmet>
         <title>Liked Artifacts | Artifact Atlas</title>
       </Helmet>
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Liked Artifacts</h1>
+       <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
+              <Typewriter
+              words={['Liked Artifact!']}
+              cursor
+              cursorStyle={'|'}
+              loop={Infinity}
+              typeSpeed={70}
+              delaySpeed={1000}
+              deleteSpeed={50}
+      
+              ></Typewriter>
+            </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {artifacts.map((artifact) => (
           <div

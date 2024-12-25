@@ -38,7 +38,7 @@ const Login = () => {
     try {
       //User Login
       await signIn(email, pass)
-      toast.success('Signin Successful')
+      toast.success('SignIn Successful ${user?.displayName}')
       navigate(from, { replace: true })
     } catch (err) {
       console.log(err)

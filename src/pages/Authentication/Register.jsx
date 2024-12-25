@@ -7,9 +7,11 @@ import Lottie from 'lottie-react'
 import { Helmet } from 'react-helmet'
 
 const Registration = () => {
+
   const navigate = useNavigate()
-  const { signInWithGoogle, createUser, updateUserProfile, setUser } =
+  const { signInWithGoogle, createUser, updateUserProfile, setUser, user } =
     useContext(AuthContext)
+
 
   const handleSignUp = async e => {
     e.preventDefault()
@@ -19,13 +21,23 @@ const Registration = () => {
     const photo = form.photo.value
     const pass = form.password.value
     console.log({ email, pass, name, photo })
+
+    // Password Validation RegEx
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+  if (!passwordRegex.test(pass)) {
+    toast.error(
+      "Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
+    );
+    return;
+  }
     try {
       //2. User Registration
       const result = await createUser(email, pass)
       console.log(result)
       await updateUserProfile(name, photo)
       setUser({ ...result.user, photoURL: photo, displayName: name })
-      toast.success('Signup Successful')
+      toast.success(`SignUp Successful ${user?.displayName}`)
       navigate('/')
     } catch (err) {
       console.log(err)
@@ -38,7 +50,7 @@ const Registration = () => {
     try {
       await signInWithGoogle()
 
-      toast.success('Signin Successful')
+      toast.success(`SignIn Successful ${user?.displayName}`)
       navigate('/')
     } catch (err) {
       console.log(err)

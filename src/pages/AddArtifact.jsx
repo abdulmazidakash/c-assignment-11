@@ -2,12 +2,13 @@ import { useState, useEffect, useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import { Typewriter } from "react-simple-typewriter";
-import { data } from "react-router-dom";
+import { data, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 function AddArtifact() {
+  const navigate = useNavigate();
 
   const axiosSecure = useAxiosSecure();
   const {user} = useContext(AuthContext);
@@ -53,7 +54,7 @@ function AddArtifact() {
 
         //3. show toast and navigate
         toast.success('Data added successfully')
-        // navigate('/my-posted-jobs')
+        navigate('/my-artifacts')
     }catch (err){
       console.log(err);
       toast.error(err.message)
