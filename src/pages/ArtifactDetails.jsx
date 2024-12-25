@@ -1,12 +1,18 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+
+import { useContext, useEffect, useState } from "react";
+import { data, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { AuthContext } from "../providers/AuthProvider";
 
 function ArtifactDetails() {
-  const { id } = useParams(); // Get artifact ID from URL
+  const { id } = useParams();
+  const {user} = useContext(AuthContext);
   const [artifact, setArtifact] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
     fetchArtifactDetails();
@@ -14,13 +20,47 @@ function ArtifactDetails() {
 
   const fetchArtifactDetails = async () => {
     try {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/artifact/${id}`);
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_URL}/artifact/${id}`
+      );
+    
       setArtifact(data);
+      setLikeCount(data.like_count);
+      setIsLiked(data.isLiked || false); // যদি `isLiked` ফিল্ড থাকে সেট করুন
     } catch (error) {
       console.error("Error fetching artifact details:", error);
       toast.error("Failed to load artifact details.");
     } finally {
       setLoading(false);
+    }
+  };
+
+
+  const handleLike = async () => {
+    try {
+      const newLikeState = !isLiked;
+      setIsLiked(newLikeState);
+      setLikeCount((prevCount) =>
+        newLikeState ? prevCount + 1 : prevCount - 1
+      );
+
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/add-like`,
+        {
+          artifactId: id, // artifactId পাঠানো হচ্ছে
+          liked: newLikeState,
+          artifact,
+          email: user?.email,
+          
+        }
+      );
+      
+
+      toast.success(newLikeState ? "Artifact liked!" : "Like removed!");
+      console.log(data);
+      fetchArtifactDetails()
+    } catch (error) {
+      console.error("Error toggling like:", error);
+      toast.error(error?.response?.data);
     }
   };
 
@@ -78,16 +118,19 @@ function ArtifactDetails() {
             </div>
             <div className="bg-gray-100 p-4 rounded-md">
               <p className="text-sm font-semibold text-gray-600">Likes</p>
-              <p className="text-lg font-bold text-gray-800">{artifact.likes}</p>
+              <p className="text-lg font-bold text-gray-800">{artifact.like_count}</p>
             </div>
           </div>
 
-          <div className="flex justify-between  items-center mt-6 flex-row-reverse">
+          <div className="flex justify-between items-center mt-6 flex-row-reverse">
             <button
-              onClick={() => handleLike()}
-              className="bg-blue-500 btn  text-white px-6 py-2 rounded hover:bg-blue-600"
+              onClick={handleLike}
+              className={`btn flex items-center px-4 py-2 rounded ${
+                isLiked ? "bg-rose-500 hover:bg-rose-600" : "bg-gray-200 hover:bg-gray-300"
+              } text-white`}
             >
-              Like Artifact
+              {isLiked ? <AiFillHeart size={20} /> : <AiOutlineHeart size={20} />}
+              <span className="ml-2">{isLiked ? "Unlike" : "Like"}</span>
             </button>
             <p className="text-sm text-gray-500 italic">
               Added by: {artifact.adderName} ({artifact.adderEmail})

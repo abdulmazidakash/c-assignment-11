@@ -14,7 +14,7 @@ function FeaturedArtifacts() {
   const fetchAllArtifacts = async () => {
     try {
       console.log("Fetching artifacts...");
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/artifacts`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/featured-artifact`);
       console.log("Fetched artifacts:", data);
       
       // Sort by likes and select the top 6
@@ -60,7 +60,7 @@ function FeaturedArtifacts() {
               />
               <h3 className="text-xl font-semibold mb-2">{artifact.name}</h3>
               <p className="text-md text-gray-600 mb-4">{artifact.context}</p>
-              <p className="text-sm text-gray-600 mb-4">Likes: {artifact.likes} 0</p>
+              <p className="text-sm text-gray-600 mb-4">Likes: {artifact.like_count}</p>
               <div className="text-right">
                 <Link
                   to={`/artifacts/${artifact._id}`}

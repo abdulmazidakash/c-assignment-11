@@ -101,14 +101,14 @@ function MyArtifacts() {
                 {/* Update Button */}
                 <Link
                   to={`/update/${artifact._id}`}
-                  className="text-blue-500 hover:underline btn-success"
+                  className="text-white hover:underline btn btn-success"
                 >
                   Update
                 </Link>
                 {/* Delete Button */}
                 <button
                   onClick={() => modernDelete(artifact._id)}
-                  className="text-red-500 hover:underline btn-error"
+                  className="text-white hover:underline btn btn-error"
                 >
                   Delete
                 </button>
