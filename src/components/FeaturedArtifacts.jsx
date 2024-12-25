@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 function FeaturedArtifacts() {
@@ -75,6 +75,10 @@ function FeaturedArtifacts() {
       ) : (
         <div className="text-center text-gray-500">No featured artifacts found.</div>
       )}
+
+      <div className="text-center mt-8">
+        <Link to='/all-artifacts' className="btn btn-success">See All Artifact</Link>
+      </div>
     </div>
   );
 }
