@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 
@@ -10,6 +10,7 @@ function UpdateArtifactCard() {
 	const [artifact, setArtifact] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const {id} = useParams();
+	const navigate = useNavigate();
   
 	useEffect(() => {
 	  fetchArtifactData();
@@ -65,7 +66,7 @@ function UpdateArtifactCard() {
 	
 			//3. show toast and navigate
 			toast.success('Updated successfully')
-			// navigate('/my-posted-jobs')
+			navigate('/my-artifacts')
 		}catch (err){
 		  console.log(err);
 		  toast.error(err.message)

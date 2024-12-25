@@ -69,7 +69,7 @@ function ArtifactDetails() {
       <div className="flex justify-center items-center h-screen">
         <div className="text-center">
           <div className="loader mb-4"></div>
-          <p className="text-lg font-semibold">Loading artifact details...</p>
+          <p className="text-lg font-semibold"><span className="loading loading-spinner text-error"></span></p>
         </div>
       </div>
     );
