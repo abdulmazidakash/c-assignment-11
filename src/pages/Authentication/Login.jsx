@@ -5,6 +5,7 @@ import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
 import Lottie from 'lottie-react'
 import { Helmet } from 'react-helmet'
+import axios from 'axios'
 // import axios from 'axios'
 const Login = () => {
 
@@ -17,9 +18,9 @@ const Login = () => {
   // Google Signin
   const handleGoogleSignIn = async () => {
     try {
-     await signInWithGoogle()
+        await signInWithGoogle()
 
-      //signIn with google
+      // signIn with google
       // const data = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email})
       // console.log(data.data);
 
