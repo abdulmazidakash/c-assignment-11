@@ -1,50 +1,38 @@
+
 import React, { useContext, useEffect, useState } from "react";
-import { AiFillHeart } from "react-icons/ai"; // React Icon
-import axios from "axios";
-import toast from "react-hot-toast";
-import { AuthContext } from "../providers/AuthProvider";
+import { AiFillHeart } from "react-icons/ai";
 import { Helmet } from "react-helmet";
+import { AuthContext } from "../providers/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Typewriter } from "react-simple-typewriter";
 
-
 const LikedArtifacts = () => {
   const axiosSecure = useAxiosSecure();
-	const {user} = useContext(AuthContext);
-	const [artifacts, setArtifacts] = useState([]);
-	const [loading, setLoading] = useState(true);
-  
-	useEffect(() => {
-	  fetchAllArtifacts();
-	}, []);
-  
-	const fetchAllArtifacts = async () => {
-	  try {
-		const { data } = await axiosSecure.get(`/liked/${user?.email}`);
-		setArtifacts(data);
-	  } catch (error) {
-		console.error("Error fetching artifacts:", error);
-	  } finally {
-		setLoading(false); // Ensure loading is updated
-	  }
-	};
+  const { user } = useContext(AuthContext);
+  const [artifacts, setArtifacts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleUnlike = async (artifactId) => {
+  useEffect(() => {
+    fetchAllArtifacts();
+  }, []);
+
+  const fetchAllArtifacts = async () => {
     try {
-      await axiosSecure.post(`/unlike`, { id: artifactId }); // Adjust endpoint and payload
-      setArtifacts((prev) =>
-        prev.filter((artifact) => artifact.id !== artifactId)
-      );
-      toast.success("Artifact unliked successfully!");
+      const { data } = await axiosSecure.get(`/liked/${user?.email}`);
+      setArtifacts(data);
     } catch (error) {
-      console.error("Error unliking artifact:", error);
-      toast.error("Failed to unlike artifact.");
+      console.error("Error fetching artifacts:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   if (loading) {
     return (
-		<div className='flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]'><span className="loading loading-spinner text-error w-14"></span>loading.......</div>
+      <div className="flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]">
+        <span className="loading loading-spinner text-error w-14"></span>
+        loading.......
+      </div>
     );
   }
 
@@ -63,48 +51,61 @@ const LikedArtifacts = () => {
       <Helmet>
         <title>Liked Artifacts | Artifact Atlas</title>
       </Helmet>
-       <h2 className='text-4xl font-bold text-center my-8 text-rose-700'>
-              <Typewriter
-              words={['Liked Artifact!']}
-              cursor
-              cursorStyle={'|'}
-              loop={Infinity}
-              typeSpeed={70}
-              delaySpeed={1000}
-              deleteSpeed={50}
-      
-              ></Typewriter>
-            </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {artifacts.map((artifact) => (
-          <div
-            key={artifact.artifact.id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-          >
-            <img
-              src={artifact.artifact.image}
-              alt={artifact.artifact.name}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-bold text-gray-800">{artifact.artifact.name}</h2>
-              <p className="text-gray-600 text-sm truncate">{artifact.artifact.context}</p>
-              <div className="flex justify-between items-center mt-4">
-                <span className="text-gray-500 text-sm italic">{artifact.artifact.type}</span>
-                <div className="flex items-center gap-1">
-                  <button
-                    onClick={() => handleUnlike(artifact.artifact.id)}
-                    className="text-red-500 flex items-center gap-1"
-                  >
-                    <AiFillHeart size={20} />
-                  </button>
-                  <span className="text-red-500">{artifact.artifact.like_count}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+      <h2 className="text-4xl font-bold text-center my-8 bg-gradient-to-r from-gray-500 to-rose-500 bg-clip-text text-transparent">
+        <Typewriter
+          words={["Liked Artifacts!"]}
+          cursor
+          cursorStyle={"|"}
+          loop={Infinity}
+          typeSpeed={70}
+          delaySpeed={1000}
+          deleteSpeed={50}
+        ></Typewriter>
+      </h2>
+      <hr className="border-t-2 border-gradient-to-r from-purple-500 to-rose-500 w-3/4 my-4 mx-auto" />
+      <div className="overflow-x-auto">
+        <table className="table w-full rounded-lg shadow-md bg-gradient-to-b from-rose-50 to-purple-50">
+          <thead>
+            <tr className="bg-gradient-to-r from-rose-500 to-gray-500 text-white">
+              <th className="text-center">#</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Context</th>
+              <th>Likes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {artifacts.map((artifact, index) => (
+              <tr
+                key={artifact.artifact.id}
+                className="hover:bg-gradient-to-r hover:from-purple-100 hover:to-rose-100"
+              >
+                <td className="text-center font-bold">{index + 1}</td>
+                <td>
+                  <img
+                    src={artifact.artifact.image}
+                    alt={artifact.artifact.name}
+                    className="w-16 h-16 rounded-md object-cover border border-rose-300"
+                  />
+                </td>
+                <td className="font-semibold text-gray-800">
+                  {artifact.artifact.name}
+                </td>
+                <td className="italic text-gray-600">{artifact.artifact.type}</td>
+                <td className="truncate max-w-xs text-gray-600">
+                  {artifact.artifact.context}
+                </td>
+                <td className="flex items-center gap-1 text-rose-500 font-medium">
+                  <AiFillHeart size={20} />
+                  <span>{artifact.artifact.like_count}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      <hr className="border-t-2 border-gradient-to-r from-purple-500 to-rose-500 w-3/4 my-4 mx-auto" />
     </div>
   );
 };

@@ -83,11 +83,11 @@ function ArtifactDetails() {
       <Helmet>
         <title>{artifact.name} | Artifact Atlas</title>
       </Helmet>
-      <div className="bg-gradient-to-br from-pink-50 via-rose-100 to-rose-200 shadow-2xl rounded-xl overflow-hidden">
+      <div className="bg-gradient-to-br from-pink-50 via-rose-100 to-teal-200 shadow-lg rounded-xl overflow-hidden">
         <img
           src={artifact.image}
           alt={artifact.name}
-          className="w-full h-80 object-cover rounded-t-xl"
+          className="w-full h-96 object-cover rounded-t-xl"
         />
         <div className="p-6">
           <h1 className="text-4xl font-extrabold text-rose-700 mb-4">

@@ -106,7 +106,7 @@ function FeaturedArtifacts() {
       <div className="text-center mt-8">
         <Link
           to="/all-artifacts"
-          className="btn bg-gradient-to-br from-pink-500 via-red-500 to-rose-500 text-white shadow-lg hover:scale-105 transition-transform"
+          className="btn bg-gradient-to-br from-rose-500 via-red-500 to-rose-500 text-white shadow-lg hover:scale-105 transition-transform"
         >
           See All Artifacts
         </Link>
