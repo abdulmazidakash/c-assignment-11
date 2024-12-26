@@ -110,4 +110,3 @@ const LikedArtifacts = () => {
 };
 
 export default LikedArtifacts;
-
