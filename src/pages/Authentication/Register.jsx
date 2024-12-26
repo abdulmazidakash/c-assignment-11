@@ -20,7 +20,7 @@ const Registration = () => {
     const name = form.name.value
     const photo = form.photo.value
     const pass = form.password.value
-    console.log({ email, pass, name, photo })
+
 
     // Password Validation RegEx
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -34,13 +34,13 @@ const Registration = () => {
     try {
       //2. User Registration
       const result = await createUser(email, pass)
-      console.log(result)
+
       await updateUserProfile(name, photo)
       setUser({ ...result.user, photoURL: photo, displayName: name })
       toast.success(`SignUp Successful ${user?.displayName}`)
       navigate('/')
     } catch (err) {
-      console.log(err)
+
       toast.error(err?.message)
     }
   }
@@ -53,7 +53,7 @@ const Registration = () => {
       toast.success(`SignIn Successful ${user?.displayName}`)
       navigate('/')
     } catch (err) {
-      console.log(err)
+
       toast.error(err?.message)
     }
   }

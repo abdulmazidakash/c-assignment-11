@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state || '/'
-  console.log(from)
+
   const { signIn, signInWithGoogle, user } = useContext(AuthContext)
 
   // Google Signin
@@ -41,7 +41,7 @@ const Login = () => {
       toast.success('SignIn Successful ${user?.displayName}')
       navigate(from, { replace: true })
     } catch (err) {
-      console.log(err)
+
       toast.error(err?.message)
     }
   }
