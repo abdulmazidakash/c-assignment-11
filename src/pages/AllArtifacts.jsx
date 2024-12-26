@@ -31,7 +31,7 @@ function AllArtifacts() {
     <Helmet>
         <title>All Artifact | Artifact Atlas</title>
       </Helmet>
-      <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
+      <h2 className='text-4xl font-bold text-center my-8 text-rose-700'>
 					<Typewriter
 					words={['All Artifacts!']}
 					cursor

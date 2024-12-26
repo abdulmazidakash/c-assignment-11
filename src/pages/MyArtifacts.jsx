@@ -76,7 +76,7 @@ function MyArtifacts() {
       <Helmet>
         <title>My Artifacts | Artifact Atlas</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-center my-8 text-cyan-700">
+      <h2 className="text-4xl font-bold text-center my-8 text-rose-700">
         <Typewriter
           words={["My Artifacts!"]}
           cursor

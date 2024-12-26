@@ -31,7 +31,7 @@ function FeaturedArtifacts() {
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className='text-4xl font-bold text-center my-8 text-cyan-700'>
+      <h2 className='text-4xl font-bold text-center my-8 text-rose-700'>
 					<Typewriter
 					words={['Featured Artifact!']}
 					cursor

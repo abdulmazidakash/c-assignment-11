@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-700 via-purple-600 to-pink-500 text-white shadow-lg">
+    <nav className="bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 text-white shadow-lg">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-3">
@@ -52,7 +52,7 @@ const Navbar = () => {
           {!user ? (
             <Link
               to="/login"
-              className="bg-white text-purple-700 py-1 px-4 rounded-full hover:bg-gray-100"
+              className="bg-white text-rose-700 py-1 px-4 rounded-full hover:bg-gray-100"
             >
               Login
             </Link>
@@ -76,7 +76,7 @@ const Navbar = () => {
               </button>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content mt-3 p-2 bg-purple-900 text-white rounded-lg shadow-lg space-y-2 w-56"
+                className="menu dropdown-content mt-3 p-2 bg-rose-900 text-white rounded-lg shadow-lg space-y-2 w-56"
               >
                 <li>
                   <Link to="/my-artifacts" className="hover:text-yellow-300">
@@ -91,7 +91,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={logOut}
-                    className="w-full py-2 bg-purple-700 hover:bg-purple-600 text-white rounded-md"
+                    className="w-full py-2 bg-rose-700 hover:bg-rose-600 text-white rounded-md"
                   >
                     Logout
                   </button>
@@ -104,7 +104,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden font-semibold bg-gradient-to-r from-indigo-700 via-purple-600 to-pink-500 py-4">
+        <div className="md:hidden font-semibold bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 py-4">
           <ul className="space-y-4 text-center">
             <li>
               <Link to="/" onClick={() => setIsMenuOpen(false)}>
@@ -155,7 +155,7 @@ const Navbar = () => {
                       logOut();
                       setIsMenuOpen(false);
                     }}
-                    className="w-full py-2 bg-purple-700 hover:bg-purple-600 text-white rounded-md"
+                    className="w-full py-2 bg-gray-700 hover:bg-rose-600 text-white rounded-md"
                   >
                     Logout
                   </button>
