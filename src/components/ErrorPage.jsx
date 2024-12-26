@@ -34,7 +34,7 @@ const ErrorPage = () => {
 
             <Link
               to='/'
-              className='px-5 py-2 text-sm btn  tracking-wide text-white transition-colors duration-200 bg-gradient-to-br from-gray-950 to-rose-950 rounded-lg shrink-0  hover:bg-gray-600'
+              className='px-5 py-2 text-sm btn  tracking-wide transition-colors duration-200 bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 text-white shadow-lg rounded-lg shrink-0  hover:bg-gray-600'
             >
               Take me home
             </Link>

@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 text-white shadow-lg">
+    <nav className="bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 text-white shadow-lg sticky z-50  top-0 h-20 justify-center items-center">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-3">

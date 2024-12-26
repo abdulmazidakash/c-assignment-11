@@ -223,7 +223,7 @@ function AddArtifact() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-gradient-to-br from-slate-950 to-rose-950 font-semibold text-white px-4 py-2 rounded w-full"
+          className="bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 shadow-lg font-semibold text-white px-4 py-2 rounded w-full"
         >
           Add Artifact
         </button>
