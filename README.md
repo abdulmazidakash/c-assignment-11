@@ -94,8 +94,8 @@ Ensure you have the following installed:
 ### **2️⃣ Clone the Repository**  
 If you haven't cloned the project yet, run:  
 ```sh
-git clone <repository_url>
-cd <project_folder>
+git clone https://github.com/abdulmazidakash/c-assignment-11.git
+cd c-assignment-11
 ```
 
 ### **3️⃣ Install Dependencies**  
