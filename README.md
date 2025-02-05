@@ -1,4 +1,4 @@
-![App Screenshot](https://i.ibb.co.com/BK5WB7P8/artifact-readme.jpg)
+![App Screenshot](https://i.ibb.co.com/Tq0Pp0cf/artifacts-banner-image.jpg)
 
 # Artifact Atlas  
 
