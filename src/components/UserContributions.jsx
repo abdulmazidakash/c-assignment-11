@@ -5,13 +5,26 @@ import { FaGlobe, FaArchive, FaRegLightbulb } from "react-icons/fa";
 
 function UserContributions() {
   return (
-    <div className="container mx-auto p-6 bg-gradient-to-r from-rose-500 via-gray-500 to-rose-500 text-white rounded-lg shadow-lg">
-      <h1 className="text-2xl lg:text-3xl font-bold text-center mb-6">
-        Explore the World's
-        <Marquee className="font-semibold my-4" gradient={false}>
-        Explore historical artifacts from across the world!
-      </Marquee>
-      </h1>
+    <div className="container mx-auto px-6 py-12 md:py-16 lg:py-20 bg-rose-50 text-white rounded-lg shadow-lg">
+
+      {/* Page Title */}
+             <h2 
+              className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white flex items-center justify-center gap-2"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+            Explore the World's
+            </h2>
+      
+            <p 
+              className="text-lg text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto mb-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              Explore historical artifacts from across the world!
+            </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         {/* Card 1 */}
         <div className="bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">

@@ -108,7 +108,7 @@ function AllArtifacts() {
                   </div>
                   <Link
                     to={`/artifacts/${artifact._id}`}
-                    className="btn btn-sm bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 text-white shadow-lg flex items-center gap-2"
+                    className="btn btn-sm bg-rose-900 text-white shadow-lg flex items-center gap-2"
                   >
                     <AiOutlineInfoCircle />
                     Details

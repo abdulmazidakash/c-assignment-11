@@ -100,7 +100,7 @@ function MyArtifacts() {
           <div className="overflow-x-auto w-full max-w-5xl">
             <table className="table w-full rounded-lg shadow-md bg-gradient-to-b from-purple-50 to-rose-50">
               <thead>
-                <tr className="bg-gradient-to-r from-gray-500 to-rose-500 text-white">
+                <tr className="bg-rose-900 text-white">
                   <th className="text-center">#</th>
                   <th className="text-center">Image</th>
                   <th className="text-center">Name</th>

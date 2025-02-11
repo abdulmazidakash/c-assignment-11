@@ -27,19 +27,25 @@ function FeaturedArtifacts() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6">
-      {/* Section Title */}
-      <h2 className="text-4xl font-bold text-center mb-8 text-rose-700">
-        <Typewriter
-          words={["Featured Artifacts"]}
-          cursor
-          cursorStyle="|"
-          loop={Infinity}
-          typeSpeed={70}
-          delaySpeed={1000}
-          deleteSpeed={50}
-        />
-      </h2>
+    <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+          {/* Page Title */}
+          <h1 
+        className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
+        Featured Artifacts
+      </h1>
+
+      <p 
+        className="text-lg mb-10 text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+      >
+        Exploring Timeless Treasures, Ancient Relics, and Hidden Gems That Tell the Stories of the Past
+      </p>
 
       {/* Loading State */}
       {loading ? (
@@ -90,7 +96,7 @@ function FeaturedArtifacts() {
               <div className="p-4 border-t text-center bg-gray-50">
                 <Link
                   to={`/artifacts/${artifact._id}`}
-                  className="btn btn-sm bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 text-white shadow-lg flex items-center gap-1 justify-center w-full"
+                  className="btn btn-sm bg-rose-900 text-white shadow-lg flex items-center gap-1 justify-center w-full"
                 >
                   Details <FaArrowRight />
                 </Link>
@@ -106,7 +112,7 @@ function FeaturedArtifacts() {
       <div className="text-center mt-8">
         <Link
           to="/all-artifacts"
-          className="btn bg-gradient-to-br from-rose-500 via-red-500 to-rose-500 text-white shadow-lg hover:scale-105 transition-transform"
+          className="btn bg-rose-900 text-white shadow-lg hover:scale-105 transition-transform"
         >
           See All Artifacts
         </Link>

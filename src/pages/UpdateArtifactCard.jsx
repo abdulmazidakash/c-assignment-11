@@ -171,7 +171,7 @@ function UpdateArtifactCard() {
 
         <button
           type="submit"
-          className="btn w-full bg-gradient-to-r from-rose-700 via-gray-600 to-rose-500 text-white hover:shadow-xl transition duration-300"
+          className="btn w-full bg-rose-900 text-white hover:shadow-xl transition duration-300"
         >
           Update Artifact
         </button>

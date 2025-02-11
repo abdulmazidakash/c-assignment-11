@@ -42,10 +42,10 @@ function Footer() {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  to="/terms-and-conditions"
                   className="hover:underline hover:text-black"
                 >
-                  About Us
+                  Terms And Conditions
                 </Link>
               </li>
             </ul>
@@ -94,32 +94,7 @@ function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-gray-700 mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm text-black font-semibold">
           <p>© 2024 Artifact Atlas. All rights reserved.</p>
-          <ul className="flex space-x-4">
-            <li>
-              <Link
-                to="/terms"
-                className="hover:underline hover:text-black"
-              >
-                Terms of Service
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/privacy"
-                className="hover:underline hover:text-black"
-              >
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/contact"
-                className="hover:underline hover:text-black"
-              >
-                Contact Us
-              </Link>
-            </li>
-          </ul>
+
         </div>
       </div>
     </footer>

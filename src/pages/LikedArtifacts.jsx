@@ -66,7 +66,7 @@ const LikedArtifacts = () => {
       <div className="overflow-x-auto">
         <table className="table w-full rounded-lg shadow-md bg-gradient-to-b from-rose-50 to-purple-50">
           <thead>
-            <tr className="bg-gradient-to-r from-rose-500 to-gray-500 text-white">
+            <tr className="bg-rose-900 text-white">
               <th className="text-center">#</th>
               <th>Image</th>
               <th>Name</th>

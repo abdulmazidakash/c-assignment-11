@@ -1,6 +1,7 @@
 import { FaAward } from 'react-icons/fa';
 import Marquee from 'react-fast-marquee';
 
+
 function FamousDiscoverers() {
   const discoverers = [
     {
@@ -21,10 +22,25 @@ function FamousDiscoverers() {
   ];
 
   return (
-    <div className="bg-base-200 shadow-lg p-8 my-10 rounded-2xl container mx-auto">
-      <h2 className="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2">
-        <FaAward className="text-yellow-500" /> Famous Discoverers
+    <div className="bg-base-200 shadow-lg px-6 py-12 md:py-16 lg:py-20 my-8 rounded-2xl container mx-auto">
+       {/* Page Title */}
+       <h2 
+        className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white flex items-center justify-center gap-2"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
+      <FaAward/> Famous Discovers
       </h2>
+
+      <p 
+        className="text-lg text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto mb-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
+      >
+        Please read these terms and conditions carefully before using Artifact Atlas.
+      </p>
       <Marquee gradient={false} speed={50} pauseOnHover>
         <div className="flex gap-8">
           {discoverers.map((person, index) => (
@@ -35,9 +51,9 @@ function FamousDiscoverers() {
               <img
                 src={person.image}
                 alt={person.name}
-                className="w-32 h-32 rounded-full mb-4 border-4 border-primary"
+                className="w-32 h-32 rounded-full mb-4 border-4 border-rose-900"
               />
-              <h3 className="text-xl font-semibold text-primary">{person.name}</h3>
+              <h3 className="text-xl font-semibold text-rose-900">{person.name}</h3>
               <p className="text-sm text-gray-500 mt-2">{person.achievement}</p>
             </div>
           ))}
