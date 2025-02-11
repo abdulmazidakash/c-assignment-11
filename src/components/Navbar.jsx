@@ -43,7 +43,7 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-6 font-semibold items-center">
           <Link to="/" className="hover:text-yellow-300">Home</Link>
           <Link to="/all-artifacts" className="hover:text-yellow-300">All Artifacts</Link>
-          <Link to="/about" className="hover:text-yellow-300">About Us</Link>
+          <Link to="/terms-and-conditions" className="hover:text-yellow-300">Terms & Conditions</Link>
           {user && <Link to="/add-artifact" className="hover:text-yellow-300">Add Artifacts</Link>}
           {!user ? (
             <Link
