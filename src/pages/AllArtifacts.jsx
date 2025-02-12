@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineInfoCircle, AiFillHeart } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 function AllArtifacts() {
   const [artifacts, setArtifacts] = useState([]);
@@ -81,10 +82,7 @@ function AllArtifacts() {
 
       {/* Loading or Card Section */}
       {loading ? (
-        <div className="flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]">
-          <span className="loading loading-spinner text-primary w-14"></span>
-          Loading...
-        </div>
+        <Spinner/>
       ) : sortedArtifacts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedArtifacts.map((artifact) => (
