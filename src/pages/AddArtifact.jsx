@@ -1,8 +1,6 @@
-
 import { useState, useEffect, useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
-import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -32,7 +30,7 @@ function AddArtifact() {
     };
 
     try {
-      const { data } = await axiosSecure.post(`/add-artifact`, formData);
+      await axiosSecure.post(`/add-artifact`, formData);
       form.reset();
       toast.success("Artifact added successfully!");
       navigate("/my-artifacts");
@@ -42,27 +40,23 @@ function AddArtifact() {
   };
 
   return (
-    <div className="container mx-auto rounded-lg my-8 flex flex-col items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100 p-6">
+    <div className="container mx-auto rounded-lg my-8 flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 p-6 shadow-lg">
       <Helmet>
         <title>Add Artifact | Artifact Atlas</title>
       </Helmet>
-          {/* Page Title */}
-          <h1 
-        className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white"
-        
-      >
-        Add a New Artifacts !
+
+      {/* Page Title */}
+      <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white">
+        Add a New Artifact!
       </h1>
 
-      <p 
-        className="text-lg mb-10 text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto"
-
-      >
+      <p className="text-lg mb-10 text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto">
         Share your discovered artifacts with the world. Provide details and upload images to preserve history.
       </p>
+
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-3xl bg-white shadow-2xl p-8 rounded-lg border border-gray-200"
+        className="w-full max-w-3xl bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-2xl p-8 rounded-lg border border-gray-200 dark:border-gray-700"
       >
         {/* Artifact Name */}
         <div className="form-control mb-4">
@@ -70,7 +64,7 @@ function AddArtifact() {
           <input
             type="text"
             name="name"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             placeholder="Enter artifact name"
             required
           />
@@ -82,7 +76,7 @@ function AddArtifact() {
           <input
             type="url"
             name="image"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             placeholder="Enter valid image URL"
             required
           />
@@ -91,7 +85,10 @@ function AddArtifact() {
         {/* Artifact Type */}
         <div className="form-control mb-4">
           <label className="label font-semibold">Artifact Type</label>
-          <select name="type" className="select select-bordered w-full">
+          <select
+            name="type"
+            className="select select-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+          >
             <option value="Tools">Tools</option>
             <option value="Weapons">Weapons</option>
             <option value="Documents">Documents</option>
@@ -107,7 +104,7 @@ function AddArtifact() {
           <label className="label font-semibold">Historical Context</label>
           <textarea
             name="context"
-            className="textarea textarea-bordered w-full"
+            className="textarea textarea-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             placeholder="Enter historical background"
             rows="4"
             required
@@ -121,7 +118,7 @@ function AddArtifact() {
             <input
               type="text"
               name="createdAt"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               placeholder="e.g., 100 BC"
               required
             />
@@ -131,7 +128,7 @@ function AddArtifact() {
             <input
               type="text"
               name="discoveredAt"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
               placeholder="e.g., 1799"
               required
             />
@@ -144,7 +141,7 @@ function AddArtifact() {
           <input
             type="text"
             name="discoveredBy"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             placeholder="Enter discoverer's name"
             required
           />
@@ -156,7 +153,7 @@ function AddArtifact() {
           <input
             type="text"
             name="location"
-            className="input input-bordered w-full"
+            className="input input-bordered w-full bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
             placeholder="Enter artifact's location"
             required
           />
@@ -170,7 +167,7 @@ function AddArtifact() {
             name="adderName"
             value={user?.displayName || ""}
             readOnly
-            className="input input-bordered bg-gray-200 w-full"
+            className="input input-bordered bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 w-full"
           />
         </div>
         <div className="form-control mb-6">
@@ -180,14 +177,14 @@ function AddArtifact() {
             name="adderEmail"
             value={user?.email || ""}
             readOnly
-            className="input input-bordered bg-gray-200 w-full"
+            className="input input-bordered bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 w-full"
           />
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className="btn btn-primary w-full bg-rose-900 text-white flex items-center justify-center gap-2"
+          className="btn btn-primary border-none w-full bg-rose-900 dark:bg-rose-700 text-white flex items-center justify-center gap-2"
         >
           <FaSave /> Add Artifact
         </button>
@@ -197,4 +194,3 @@ function AddArtifact() {
 }
 
 export default AddArtifact;
-

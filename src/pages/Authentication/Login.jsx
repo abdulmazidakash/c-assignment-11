@@ -5,10 +5,8 @@ import { AuthContext } from '../../providers/AuthProvider'
 import toast from 'react-hot-toast'
 import Lottie from 'lottie-react'
 import { Helmet } from 'react-helmet'
-import axios from 'axios'
-// import axios from 'axios'
-const Login = () => {
 
+const Login = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const from = location?.state || '/'
@@ -18,8 +16,7 @@ const Login = () => {
   // Google Signin
   const handleGoogleSignIn = async () => {
     try {
-        await signInWithGoogle()
-
+      await signInWithGoogle()
       toast.success(`SignIn Successful ${user?.displayName}`)
       navigate(from, { replace: true })
     } catch (err) {
@@ -36,26 +33,22 @@ const Login = () => {
     const pass = form.password.value
     console.log({ email, pass })
     try {
-      //User Login
+      // User Login
       await signIn(email, pass)
-      toast.success('SignIn Successful ${user?.displayName}')
+      toast.success(`SignIn Successful ${user?.displayName}`)
       navigate(from, { replace: true })
     } catch (err) {
-
       toast.error(err?.message)
     }
   }
 
   return (
-    <div className='flex items-center min-h-[calc(100vh-306px)] my-12 container border-2 border-gray-100 mx-auto rounded-lg'>
+    <div className='flex items-center min-h-[calc(100vh-306px)] my-12 container border-2 border-gray-100 mx-auto rounded-lg dark:bg-gray-800 dark:border-gray-600'>
       <Helmet>
         <title>Login | Artifact Atlas</title>
       </Helmet>
-      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg   lg:max-w-4xl '>
-        <div
-          className='hidden bg-cover bg-center lg:block lg:w-1/2 mt-24'
-          
-        >
+      <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white dark:bg-gray-800 rounded-lg lg:max-w-4xl'>
+        <div className='hidden bg-cover bg-center lg:block lg:w-1/2 mt-24'>
           <Lottie animationData={loginLottie}></Lottie>
         </div>
 
@@ -64,16 +57,17 @@ const Login = () => {
             <img className='w-auto h-7 sm:h-8' src='' alt='' />
           </div>
 
-          <p className='mt-3 text-xl text-center text-gray-600 '>
+          <p className='mt-3 text-xl text-center text-gray-600 dark:text-gray-200'>
             Welcome back!
           </p>
 
           <div
             onClick={handleGoogleSignIn}
-            className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
+            className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 dark:text-gray-300 transition-colors duration-300 transform border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700'
           >
             <div className='px-4 py-2'>
               <svg className='w-6 h-6' viewBox='0 0 40 40'>
+                {/* Google Icon SVG */}
                 <path
                   d='M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z'
                   fill='#FFC107'
@@ -99,18 +93,19 @@ const Login = () => {
           </div>
 
           <div className='flex items-center justify-between mt-4'>
-            <span className='w-1/5 border-b  lg:w-1/4'></span>
+            <span className='w-1/5 border-b dark:border-gray-600 lg:w-1/4'></span>
 
-            <div className='text-xs text-center text-gray-500 uppercase  hover:underline'>
+            <div className='text-xs text-center text-gray-500 dark:text-gray-300 uppercase hover:underline'>
               or login with email
             </div>
 
-            <span className='w-1/5 border-b dark:border-gray-400 lg:w-1/4'></span>
+            <span className='w-1/5 border-b dark:border-gray-600 lg:w-1/4'></span>
           </div>
+
           <form onSubmit={handleSignIn}>
             <div className='mt-4'>
               <label
-                className='block mb-2 text-sm font-medium text-gray-600 '
+                className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300'
                 htmlFor='LoggingEmailAddress'
               >
                 Email Address
@@ -119,7 +114,7 @@ const Login = () => {
                 id='LoggingEmailAddress'
                 autoComplete='email'
                 name='email'
-                className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
+                className='block w-full px-4 py-2 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600'
                 type='email'
               />
             </div>
@@ -127,7 +122,7 @@ const Login = () => {
             <div className='mt-4'>
               <div className='flex justify-between'>
                 <label
-                  className='block mb-2 text-sm font-medium text-gray-600 '
+                  className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300'
                   htmlFor='loggingPassword'
                 >
                   Password
@@ -138,10 +133,11 @@ const Login = () => {
                 id='loggingPassword'
                 autoComplete='current-password'
                 name='password'
-                className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
+                className='block w-full px-4 py-2 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600'
                 type='password'
               />
             </div>
+
             <div className='mt-6'>
               <button
                 type='submit'
@@ -153,16 +149,16 @@ const Login = () => {
           </form>
 
           <div className='flex items-center justify-between mt-4'>
-            <span className='w-1/5 border-b  md:w-1/4'></span>
+            <span className='w-1/5 border-b dark:border-gray-600 md:w-1/4'></span>
 
             <Link
               to='/register'
-              className='text-xs text-gray-500 uppercase  hover:underline'
+              className='text-xs text-gray-500 dark:text-gray-300 uppercase hover:underline'
             >
               or sign up
             </Link>
 
-            <span className='w-1/5 border-b  md:w-1/4'></span>
+            <span className='w-1/5 border-b dark:border-gray-600 md:w-1/4'></span>
           </div>
         </div>
       </div>

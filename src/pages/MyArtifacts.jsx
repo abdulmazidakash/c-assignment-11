@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
@@ -32,7 +31,7 @@ function MyArtifacts() {
 
   const handleDelete = async (id) => {
     try {
-      const { data } = await axiosSecure.delete(`/artifact/${id}`);
+      await axiosSecure.delete(`/artifact/${id}`);
       toast.success("Deleted Successfully");
       setArtifacts((prevArtifacts) =>
         prevArtifacts.filter((artifact) => artifact._id !== id)
@@ -46,14 +45,10 @@ function MyArtifacts() {
   const modernDelete = (id) => {
     toast((t) => (
       <div className="flex gap-3 items-center">
-        <div>
-          <p>
-            Are you <b>sure</b>?
-          </p>
-        </div>
+        <p>Are you <b>sure</b>?</p>
         <div className="gap-2 flex">
           <button
-            className="bg-red-500 text-white px-3 py-1 rounded-md"
+            className="bg-red-600 text-white px-3 py-1 rounded-md hover:bg-red-700 transition"
             onClick={() => {
               handleDelete(id);
               toast.dismiss(t.id);
@@ -62,7 +57,7 @@ function MyArtifacts() {
             Yes
           </button>
           <button
-            className="bg-green-500 text-white px-3 py-1 rounded-md"
+            className="bg-gray-600 text-white px-3 py-1 rounded-md hover:bg-gray-700 transition"
             onClick={() => toast.dismiss(t.id)}
           >
             Cancel
@@ -73,11 +68,12 @@ function MyArtifacts() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-6">
+    <div className="flex my-8 rounded-lg container mx-auto flex-col items-center justify-center p-6 bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <Helmet>
         <title>My Artifacts | Artifact Atlas</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-center my-8 bg-gradient-to-r from-gray-500 to-rose-500 bg-clip-text text-transparent">
+
+      <h2 className="text-4xl font-bold text-center my-8 text-gray-900 dark:text-white">
         <Typewriter
           words={["My Artifacts!"]}
           cursor
@@ -86,66 +82,62 @@ function MyArtifacts() {
           typeSpeed={70}
           delaySpeed={1000}
           deleteSpeed={50}
-        ></Typewriter>
+        />
       </h2>
 
-      <hr className="border-t-2 border-gradient-to-r from-purple-500 to-rose-500 w-3/4 my-4" />
+      <hr className="border-t-2 border-gray-400 w-3/4 my-4 dark:border-gray-600" />
 
       {loading ? (
-        <Spinner/>
+        <Spinner />
       ) : artifacts.length > 0 ? (
-        <>
-          <div className="overflow-x-auto w-full max-w-5xl">
-            <table className="table w-full rounded-lg shadow-md bg-gradient-to-b from-purple-50 to-rose-50">
-              <thead>
-                <tr className="bg-rose-900 text-white">
-                  <th className="text-center">#</th>
-                  <th className="text-center">Image</th>
-                  <th className="text-center">Name</th>
-                  <th className="text-center">Actions</th>
+        <div className="overflow-x-auto w-full max-w-5xl rounded-lg">
+          <table className="table w-full rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
+            <thead>
+              <tr className="bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white">
+                <th className="text-center py-3">#</th>
+                <th className="text-center py-3">Image</th>
+                <th className="text-center py-3">Name</th>
+                <th className="text-center py-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {artifacts.map((artifact, index) => (
+                <tr
+                  key={artifact._id}
+                  className="hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+                >
+                  <td className="text-center font-bold py-2">{index + 1}</td>
+                  <td className="flex justify-center items-center py-2">
+                    <img
+                      src={artifact.image}
+                      alt={artifact.name}
+                      className="w-16 h-16 object-cover rounded-md border border-gray-400 dark:border-gray-600"
+                    />
+                  </td>
+                  <td className="text-center font-semibold text-gray-800 dark:text-white py-2">
+                    {artifact.name}
+                  </td>
+                  <td className="flex justify-center items-center gap-2 py-2">
+                    <Link
+                      to={`/update/${artifact._id}`}
+                      className="px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+                    >
+                      <FaEdit className="inline mr-1" /> Update
+                    </Link>
+                    <button
+                      onClick={() => modernDelete(artifact._id)}
+                      className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
+                    >
+                      <FaTrashAlt className="inline mr-1" /> Delete
+                    </button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {artifacts.map((artifact, index) => (
-                  <tr
-                    key={artifact._id}
-                    className="hover:bg-gradient-to-r hover:from-rose-100 hover:to-purple-100"
-                  >
-                    <td className="text-center font-bold">{index + 1}</td>
-                    <td className="flex justify-center items-center">
-                      <img
-                        src={artifact.image}
-                        alt={artifact.name}
-                        className="w-16 h-16 object-cover rounded-md border border-purple-300"
-                      />
-                    </td>
-                    <td className="text-center font-semibold text-gray-800">
-                      {artifact.name}
-                    </td>
-                    <td className="flex justify-center items-center gap-2">
-                      <Link
-                        to={`/update/${artifact._id}`}
-                        className="btn btn-sm btn-success flex items-center gap-1"
-                      >
-                        <FaEdit /> Update
-                      </Link>
-                      <button
-                        onClick={() => modernDelete(artifact._id)}
-                        className="btn btn-sm btn-error flex items-center gap-1"
-                      >
-                        <FaTrashAlt /> Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <hr className="border-t-2 border-gradient-to-r from-purple-500 to-rose-500 w-3/4 my-4" />
-        </>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
-        <div className="text-center text-gray-500 font-bold">
+        <div className="text-center text-gray-500 font-bold dark:text-gray-300">
           No artifacts added by you.
         </div>
       )}
@@ -154,5 +146,3 @@ function MyArtifacts() {
 }
 
 export default MyArtifacts;
-
-

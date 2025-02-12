@@ -37,13 +37,13 @@ function AllArtifacts() {
   );
 
   return (
-    <div className="container mx-auto px-6 py-8">
+    <div className="container mx-auto my-8 px-6 py-8 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white rounded-lg shadow-lg">
       <Helmet>
         <title>All Artifacts | Artifact Atlas</title>
       </Helmet>
 
       {/* Page Title */}
-      <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white">
+      <h2 className="text-4xl md:text-5xl font-bold text-center">
         Explore Timeless Artifacts
       </h2>
 
@@ -60,7 +60,7 @@ function AllArtifacts() {
             placeholder="Search by artifact name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="input input-bordered w-full pr-12"
+            className="input input-bordered w-full pr-12 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200"
           />
           <button className="absolute right-2 top-1/2 transform -translate-y-1/2 btn btn-square btn-ghost">
             <FiSearch size={20} />
@@ -72,7 +72,7 @@ function AllArtifacts() {
           <select
             value={sortOption}
             onChange={(e) => setSortOption(e.target.value)}
-            className="select select-bordered w-full"
+            className="select select-bordered w-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200"
           >
             <option>Most Liked</option>
             <option>Least Liked</option>
@@ -82,13 +82,13 @@ function AllArtifacts() {
 
       {/* Loading or Card Section */}
       {loading ? (
-        <Spinner/>
+        <Spinner />
       ) : sortedArtifacts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sortedArtifacts.map((artifact) => (
             <div
               key={artifact._id}
-              className="card shadow-xl bg-gradient-to-b from-rose-100 via-white to-purple-50 rounded-lg transform hover:scale-105 transition-transform"
+              className="card shadow-xl bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg transform hover:scale-105 transition-transform"
             >
               {/* Image */}
               <figure className="relative">
@@ -104,10 +104,8 @@ function AllArtifacts() {
 
               {/* Card Content */}
               <div className="card-body">
-                <h3 className="text-2xl font-bold text-gray-800">
-                  {artifact.name}
-                </h3>
-                <p className="text-gray-600 text-sm">
+                <h3 className="text-2xl font-bold">{artifact.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
                   {artifact.context
                     ? artifact.context.substring(0, 100)
                     : "No description available"}
@@ -117,13 +115,13 @@ function AllArtifacts() {
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center gap-2">
                     <AiFillHeart className="text-rose-500" />
-                    <span className="text-gray-700 text-sm">
+                    <span className="text-gray-700 dark:text-gray-300 text-sm">
                       {artifact.like_count} Likes
                     </span>
                   </div>
                   <Link
                     to={`/artifacts/${artifact._id}`}
-                    className="btn btn-sm bg-rose-900 text-white shadow-lg flex items-center gap-2"
+                    className="btn btn-sm bg-rose-900 dark:bg-rose-700 text-white shadow-lg flex items-center gap-2"
                   >
                     <AiOutlineInfoCircle />
                     Details
@@ -134,7 +132,7 @@ function AllArtifacts() {
           ))}
         </div>
       ) : (
-        <div className="text-center text-gray-500 font-semibold">
+        <div className="text-center text-gray-500 dark:text-gray-400 font-semibold">
           No artifacts found. Try a different search term.
         </div>
       )}
