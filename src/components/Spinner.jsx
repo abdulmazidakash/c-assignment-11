@@ -1,10 +1,10 @@
 const Spinner = () => {
 	return (
-	  <div className="flex items-center justify-center min-h-screen bg-base-100">
+	  <div className="flex items-center justify-center min-h-screen bg-base-100 dark:bg-base-900">
 		<div className="relative w-24 h-24">
 		  {/* Outer Ring */}
 		  <div
-			className="absolute inset-0 border-[6px] border-rose-900 border-t-transparent rounded-full"
+			className="absolute inset-0 border-[6px] border-rose-900 dark:border-rose-500 border-t-transparent rounded-full"
 			style={{
 			  animation: "spin 2s linear infinite",
 			}}
@@ -12,7 +12,7 @@ const Spinner = () => {
   
 		  {/* Inner Ring */}
 		  <div
-			className="absolute inset-3 border-[6px] border-rose-500 border-t-transparent rounded-full"
+			className="absolute inset-3 border-[6px] border-rose-500 dark:border-rose-300 border-t-transparent rounded-full"
 			style={{
 			  animation: "spin-reverse 2s linear infinite",
 			}}
@@ -21,7 +21,7 @@ const Spinner = () => {
 		  {/* Pulsing Dot */}
 		  <div className="absolute inset-7 flex items-center justify-center">
 			<div
-			  className="w-6 h-6 bg-rose-900 rounded-full"
+			  className="w-6 h-6 bg-rose-900 dark:bg-rose-300 rounded-full"
 			  style={{
 				animation: "ping 1s infinite",
 			  }}

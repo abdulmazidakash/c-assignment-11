@@ -7,6 +7,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 function MyArtifacts() {
   const axiosSecure = useAxiosSecure();
@@ -91,10 +92,7 @@ function MyArtifacts() {
       <hr className="border-t-2 border-gradient-to-r from-purple-500 to-rose-500 w-3/4 my-4" />
 
       {loading ? (
-        <div className="flex items-center justify-center font-bold text-gray-500 text-4xl gap-2 w-full min-h-[calc(100vh-305px)]">
-          <span className="loading loading-spinner text-error w-14"></span>
-          Loading...
-        </div>
+        <Spinner/>
       ) : artifacts.length > 0 ? (
         <>
           <div className="overflow-x-auto w-full max-w-5xl">

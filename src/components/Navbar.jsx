@@ -1,13 +1,27 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { Link } from 'react-router-dom';
+import { FaSun, FaMoon } from 'react-icons/fa'; // React Icons
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   return (
-    <nav className="bg-rose-900 text-white shadow-lg sticky z-50 top-0 h-20 flex justify-center items-center">
+    <nav className="bg-rose-900 text-white shadow-lg sticky z-50 top-0 h-20 flex justify-center items-center dark:bg-gray-900">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-3">
@@ -16,28 +30,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Hamburger Menu Button for Mobile */}
-        <div className="md:hidden">
-          <button
-            className="text-white focus:outline-none"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg
-              className="w-6 h-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
-              />
-            </svg>
-          </button>
-        </div>
+
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 font-semibold items-center">
@@ -52,7 +45,8 @@ const Navbar = () => {
             >
               Login
             </Link>
-          ) : (
+          )
+           : (
             <div className="dropdown dropdown-end">
               <button
                 tabIndex={0}
@@ -65,7 +59,7 @@ const Navbar = () => {
               </button>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content mt-3 p-2 bg-rose-900 text-white rounded-lg shadow-lg w-56"
+                className="menu dropdown-content mt-3 p-2 bg-rose-900 text-white rounded-lg shadow-lg w-56 dark:bg-gray-800"
               >
                 <li><Link to="/my-artifacts">My Artifacts</Link></li>
                 <li><Link to="/liked-artifacts">Liked Artifacts</Link></li>
@@ -81,6 +75,27 @@ const Navbar = () => {
             </div>
           )}
         </div>
+        
+
+        {/* Theme Toggle Button for Desktop and Mobile */}
+        <div className="flex items-center space-x-4">
+          {/* Mobile Mode */}
+          <button
+            className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition dark:bg-gray-200 dark:text-black md:hidden"
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
+
+          {/* Desktop Mode */}
+          <button
+            className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition dark:bg-gray-200 dark:text-black hidden md:block"
+            onClick={() => setDarkMode(!darkMode)}
+          >
+            {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
+          </button>
+        </div>
+
       </div>
 
       {/* Mobile Menu */}
@@ -109,6 +124,28 @@ const Navbar = () => {
           )}
         </ul>
       </div>
+              {/* Hamburger Menu Button for Mobile */}
+              <div className="md:hidden">
+          <button
+            className="text-white focus:outline-none"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <svg
+              className="w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={isMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16m-7 6h7'}
+              />
+            </svg>
+          </button>
+        </div>
     </nav>
   );
 };

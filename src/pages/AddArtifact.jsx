@@ -58,7 +58,7 @@ function AddArtifact() {
         className="text-lg mb-10 text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto"
 
       >
-        Exploring Timeless Treasures, Ancient Relics, and Hidden Gems That Tell the Stories of the Past
+        Share your discovered artifacts with the world. Provide details and upload images to preserve history.
       </p>
       <form
         onSubmit={handleSubmit}

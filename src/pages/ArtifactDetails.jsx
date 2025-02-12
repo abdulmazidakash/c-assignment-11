@@ -13,6 +13,7 @@ import { BsCalendar2Check, BsGeoAlt } from "react-icons/bs";
 import { AuthContext } from "../providers/AuthProvider";
 import { Helmet } from "react-helmet";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Spinner from "../components/Spinner";
 
 function ArtifactDetails() {
   const axiosSecure = useAxiosSecure();
@@ -64,9 +65,7 @@ function ArtifactDetails() {
 
   if (loading) {
     return (
-      <div className="flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]">
-        <span className="loading loading-spinner text-error w-14"></span>Loading...
-      </div>
+      <Spinner/>
     );
   }
 

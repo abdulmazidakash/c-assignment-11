@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { FaEdit } from "react-icons/fa";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import Spinner from "../components/Spinner";
 
 function UpdateArtifactCard() {
   const axiosSecure = useAxiosSecure();
@@ -55,6 +56,8 @@ function UpdateArtifactCard() {
       toast.error("Something went wrong!");
     }
   };
+
+  if(loading) return <Spinner/>
 
   return (
     <div className="container mx-auto p-4 md:p-8">

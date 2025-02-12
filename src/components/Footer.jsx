@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="bg-base-200 text-black shadow-lg">
+    <footer className="bg-base-200 dark:bg-gray-900 text-black dark:text-white shadow-lg">
       <div className="container mx-auto py-10 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div>
             <h2 className="text-2xl font-bold mb-4">Artifact Atlas</h2>
-            <p className="text-black font-semibold">
+            <p className="font-semibold">
               Discover, share, and explore amazing artifacts from history.
               Artifact Atlas connects enthusiasts worldwide to preserve history.
             </p>
@@ -20,14 +20,14 @@ function Footer() {
             <h2 className="text-xl font-bold mb-4">Quick Links</h2>
             <ul className="space-y-2 font-semibold">
               <li>
-                <Link to="/" className="hover:underline hover:text-black">
+                <Link to="/" className="hover:underline hover:text-black dark:hover:text-white">
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   to="/all-artifacts"
-                  className="hover:underline hover:text-black"
+                  className="hover:underline hover:text-black dark:hover:text-white"
                 >
                   All Artifacts
                 </Link>
@@ -35,7 +35,7 @@ function Footer() {
               <li>
                 <Link
                   to="/add-artifact"
-                  className="hover:underline hover:text-black"
+                  className="hover:underline hover:text-black dark:hover:text-white"
                 >
                   Add Artifact
                 </Link>
@@ -43,7 +43,7 @@ function Footer() {
               <li>
                 <Link
                   to="/terms-and-conditions"
-                  className="hover:underline hover:text-black"
+                  className="hover:underline hover:text-black dark:hover:text-white"
                 >
                   Terms And Conditions
                 </Link>
@@ -59,7 +59,7 @@ function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black hover:text-black"
+                className="text-black dark:text-white hover:text-black dark:hover:text-white"
               >
                 <FaFacebook size={24} />
               </a>
@@ -67,7 +67,7 @@ function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black hover:text-black"
+                className="text-black dark:text-white hover:text-black dark:hover:text-white"
               >
                 <FaTwitter size={24} />
               </a>
@@ -75,7 +75,7 @@ function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black hover:text-black"
+                className="text-black dark:text-white hover:text-black dark:hover:text-white"
               >
                 <FaInstagram size={24} />
               </a>
@@ -83,7 +83,7 @@ function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-black hover:text-black"
+                className="text-black dark:text-white hover:text-black dark:hover:text-white"
               >
                 <FaLinkedin size={24} />
               </a>
@@ -92,9 +92,8 @@ function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-gray-700 mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm text-black font-semibold">
-          <p>© 2024 Artifact Atlas. All rights reserved.</p>
-
+        <div className="border-t border-gray-700 dark:border-gray-500 mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm font-semibold">
+          <p className="text-black dark:text-white">© 2024 Artifact Atlas. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -102,4 +101,3 @@ function Footer() {
 }
 
 export default Footer;
-

@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { AuthContext } from "../providers/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Typewriter } from "react-simple-typewriter";
+import Spinner from "../components/Spinner";
 
 const LikedArtifacts = () => {
   const axiosSecure = useAxiosSecure();
@@ -29,10 +30,7 @@ const LikedArtifacts = () => {
 
   if (loading) {
     return (
-      <div className="flex font-bold text-gray-500 text-4xl gap-2 items-center justify-center w-full min-h-[calc(100vh-305px)]">
-        <span className="loading loading-spinner text-error w-14"></span>
-        loading.......
-      </div>
+      <Spinner/>
     );
   }
 
