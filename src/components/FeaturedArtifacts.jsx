@@ -27,22 +27,18 @@ function FeaturedArtifacts() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20">
+    <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 rounded-lg">
           {/* Page Title */}
           <h1 
         className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        
       >
         Featured Artifacts
       </h1>
 
       <p 
         className="text-lg mb-10 text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
+
       >
         Exploring Timeless Treasures, Ancient Relics, and Hidden Gems That Tell the Stories of the Past
       </p>

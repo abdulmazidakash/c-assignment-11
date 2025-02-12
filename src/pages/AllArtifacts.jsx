@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
-import { Typewriter } from "react-simple-typewriter";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineInfoCircle, AiFillHeart } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -11,6 +10,7 @@ function AllArtifacts() {
   const [artifacts, setArtifacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [sortOption, setSortOption] = useState("Most Liked");
 
   useEffect(() => {
     const fetchAllArtifacts = async () => {
@@ -18,6 +18,7 @@ function AllArtifacts() {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/artifacts?search=${search}`
         );
+
         setArtifacts(data);
       } catch (error) {
         console.error("Error fetching artifacts:", error);
@@ -25,33 +26,37 @@ function AllArtifacts() {
         setLoading(false);
       }
     };
+
     fetchAllArtifacts();
   }, [search]);
+
+  // Sorting Function
+  const sortedArtifacts = [...artifacts].sort((a, b) =>
+    sortOption === "Most Liked" ? b.like_count - a.like_count : a.like_count - b.like_count
+  );
 
   return (
     <div className="container mx-auto px-6 py-8">
       <Helmet>
         <title>All Artifacts | Artifact Atlas</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-center my-8 text-rose-700">
-        <Typewriter
-          words={["Explore Timeless Artifacts!"]}
-          cursor
-          cursorStyle={"|"}
-          loop={Infinity}
-          typeSpeed={70}
-          deleteSpeed={50}
-          delaySpeed={1000}
-        />
+
+      {/* Page Title */}
+      <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white">
+        Explore Timeless Artifacts
       </h2>
 
-      {/* Search Section */}
-      <div className="mb-6 flex items-center justify-center gap-4">
-        <div className="relative w-full max-w-lg">
+      <p className="text-lg text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto mb-10">
+        Uncover Ancient Relics, Forgotten Treasures, and Mystical Objects That Reveal the Secrets of History
+      </p>
+
+      {/* Search & Sorting Section */}
+      <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
+        {/* Search Bar */}
+        <div className="relative w-full md:w-2/3 max-w-lg">
           <input
             type="text"
             placeholder="Search by artifact name..."
-            name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="input input-bordered w-full pr-12"
@@ -59,6 +64,18 @@ function AllArtifacts() {
           <button className="absolute right-2 top-1/2 transform -translate-y-1/2 btn btn-square btn-ghost">
             <FiSearch size={20} />
           </button>
+        </div>
+
+        {/* Sorting Dropdown */}
+        <div className="w-full md:w-1/3">
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            className="select select-bordered w-full"
+          >
+            <option>Most Liked</option>
+            <option>Least Liked</option>
+          </select>
         </div>
       </div>
 
@@ -68,9 +85,9 @@ function AllArtifacts() {
           <span className="loading loading-spinner text-primary w-14"></span>
           Loading...
         </div>
-      ) : artifacts.length > 0 ? (
+      ) : sortedArtifacts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {artifacts.map((artifact) => (
+          {sortedArtifacts.map((artifact) => (
             <div
               key={artifact._id}
               className="card shadow-xl bg-gradient-to-b from-rose-100 via-white to-purple-50 rounded-lg transform hover:scale-105 transition-transform"
@@ -128,4 +145,3 @@ function AllArtifacts() {
 }
 
 export default AllArtifacts;
-

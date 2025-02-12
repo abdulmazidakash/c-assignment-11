@@ -4,7 +4,7 @@ import { FaCheckCircle, FaExclamationTriangle, FaUserShield } from "react-icons/
 const TermsAndConditions = () => {
   return (
     <motion.div 
-      className="px-6 py-12 md:py-16 lg:py-20 bg-gray-50 dark:bg-gray-900"
+      className="px-6 py-12 md:py-16 lg:py-20 my-8 container mx-auto rounded-lg bg-gray-50 dark:bg-gray-900"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}

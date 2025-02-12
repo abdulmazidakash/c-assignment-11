@@ -42,21 +42,24 @@ function AddArtifact() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100 p-6">
+    <div className="container mx-auto rounded-lg my-8 flex flex-col items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100 p-6">
       <Helmet>
         <title>Add Artifact | Artifact Atlas</title>
       </Helmet>
-      <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-rose-600 text-center my-8">
-        <Typewriter
-          words={["Add a New Artifact!"]}
-          cursor
-          cursorStyle="|"
-          loop={Infinity}
-          typeSpeed={70}
-          delaySpeed={1000}
-          deleteSpeed={50}
-        />
-      </h2>
+          {/* Page Title */}
+          <h1 
+        className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white"
+        
+      >
+        Add a New Artifacts !
+      </h1>
+
+      <p 
+        className="text-lg mb-10 text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto"
+
+      >
+        Exploring Timeless Treasures, Ancient Relics, and Hidden Gems That Tell the Stories of the Past
+      </p>
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-3xl bg-white shadow-2xl p-8 rounded-lg border border-gray-200"
@@ -184,7 +187,7 @@ function AddArtifact() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="btn btn-primary w-full bg-gradient-to-r from-gray-600 to-rose-600 text-white flex items-center justify-center gap-2"
+          className="btn btn-primary w-full bg-rose-900 text-white flex items-center justify-center gap-2"
         >
           <FaSave /> Add Artifact
         </button>

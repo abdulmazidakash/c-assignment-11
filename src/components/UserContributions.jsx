@@ -10,18 +10,14 @@ function UserContributions() {
       {/* Page Title */}
              <h2 
               className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white flex items-center justify-center gap-2"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+
             >
             Explore the World's
             </h2>
       
             <p 
               className="text-lg text-center text-gray-600 dark:text-gray-300 mt-4 max-w-3xl mx-auto mb-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+
             >
               Explore historical artifacts from across the world!
             </p>
