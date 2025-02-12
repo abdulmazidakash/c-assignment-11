@@ -93,7 +93,7 @@ function MyArtifacts() {
         <div className="overflow-x-auto w-full max-w-5xl rounded-lg">
           <table className="table w-full rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
             <thead>
-              <tr className="bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white">
+              <tr className="bg-rose-900 text-white dark:bg-gray-700 dark:text-white">
                 <th className="text-center py-3">#</th>
                 <th className="text-center py-3">Image</th>
                 <th className="text-center py-3">Name</th>

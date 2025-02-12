@@ -27,13 +27,13 @@ function FeaturedArtifacts() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 rounded-lg">
+    <div className="container mx-auto px-4 py-12 md:py-16 lg:py-20 rounded-lg dark:bg-gray-900 my-8">
       {/* Page Title */}
-      <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-black">
+      <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 dark:text-white">
         Featured Artifacts
       </h1>
 
-      <p className="text-lg mb-10 text-center text-gray-600 dark:text-black mt-4 max-w-3xl mx-auto">
+      <p className="text-lg mb-10 text-center text-gray-600 dark:text-white mt-4 max-w-3xl mx-auto">
         Exploring Timeless Treasures, Ancient Relics, and Hidden Gems That Tell the Stories of the Past
       </p>
 
