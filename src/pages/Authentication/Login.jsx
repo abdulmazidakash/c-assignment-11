@@ -11,13 +11,14 @@ const Login = () => {
   const location = useLocation()
   const from = location?.state || '/'
 
-  const { signIn, signInWithGoogle, user } = useContext(AuthContext)
+  const { signIn, signInWithGoogle, user } = useContext(AuthContext);
+  console.log(user);
 
-  // Google Signin
+  // Google SignIn
   const handleGoogleSignIn = async () => {
     try {
-      await signInWithGoogle()
-      toast.success(`SignIn Successful ${user?.displayName}`)
+      const result = await signInWithGoogle();
+      toast.success(`SignIn Successful ${result?.user?.displayName}`)
       navigate(from, { replace: true })
     } catch (err) {
       console.log(err)
