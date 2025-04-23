@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -9,6 +10,15 @@ const Navbar = () => {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
   );
+
+  const handleSignOut = async () => {
+    try{
+      await logOut()
+      toast.success(`logged out successfully ${user?.displayName}`)
+    }catch(error){
+      toast.error(`Error logging out ${error.message}`)
+    };
+  };
 
   useEffect(() => {
     if (darkMode) {
@@ -19,6 +29,8 @@ const Navbar = () => {
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
+
+
 
   return (
     <nav className="bg-rose-900 text-white shadow-lg sticky top-0 z-50 h-20 flex justify-center items-center dark:bg-gray-900">
@@ -65,7 +77,7 @@ const Navbar = () => {
                 <li><Link to="/liked-artifacts">Liked Artifacts</Link></li>
                 <li>
                   <button
-                    onClick={logOut}
+                    onClick={handleSignOut}
                     className="w-full py-2 bg-rose-700 hover:bg-rose-600 text-white rounded-md"
                   >
                     Logout
@@ -125,7 +137,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => {
-                    logOut();
+                    handleSignOut();
                     setIsMenuOpen(false);
                   }}
                   className="w-full py-2 bg-gray-700 hover:bg-rose-600 text-white rounded-md"
