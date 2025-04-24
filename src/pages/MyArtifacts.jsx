@@ -100,7 +100,7 @@ function MyArtifacts() {
                 <th className="text-center py-3">Actions</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="dark:bg-gray-800">
               {artifacts.map((artifact, index) => (
                 <tr
                   key={artifact._id}

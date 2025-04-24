@@ -47,7 +47,7 @@ const LikedArtifacts = () => {
         <title>Liked Artifacts | Artifact Atlas</title>
       </Helmet>
       
-      <h2 className="text-4xl font-bold text-center my-8 bg-gradient-to-r from-gray-500 to-rose-500 bg-clip-text text-transparent dark:from-gray-300 dark:to-rose-300">
+      <h2 className="text-4xl font-bold text-center my-8 bg-gradient-to-r from-gray-500 to-rose-500 bg-clip-text text-transparent dark:from-gray-300 dark:to-rose-300 text-gray-900 dark:text-white">
         <Typewriter
           words={["Liked Artifacts!"]}
           cursor
