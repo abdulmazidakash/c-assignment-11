@@ -26,7 +26,7 @@
     "react-router-dom": "^7.1.0",
     "react-simple-typewriter": "^5.0.1",
     "sort-by": "^1.2.0",
-    "swiper": "^11.1.15",
+    "swiper": "^11.2.6",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {

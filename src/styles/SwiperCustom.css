@@ -1,0 +1,14 @@
+.custom-swiper-pagination {
+	position: relative;
+	bottom: 0;
+	text-align: center;
+  }
+  .swiper-pagination-bullet {
+	background: #333;
+	opacity: 0.6;
+  }
+  .swiper-pagination-bullet-active {
+	background: #f43f5e; /* Tailwind's rose-500 */
+	opacity: 1;
+  }
+  
