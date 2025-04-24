@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import errorLottie from '../assets/lottie/errorPage.json';
 import Lottie from 'lottie-react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
   return (

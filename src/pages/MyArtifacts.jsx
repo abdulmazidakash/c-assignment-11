@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 import { Typewriter } from "react-simple-typewriter";
-import { Helmet } from "react-helmet";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import Spinner from "../components/Spinner";
+import { Helmet } from "react-helmet-async";
 
 function MyArtifacts() {
   const axiosSecure = useAxiosSecure();
@@ -91,7 +91,7 @@ function MyArtifacts() {
         <Spinner />
       ) : artifacts.length > 0 ? (
         <div className="overflow-x-auto w-full max-w-5xl rounded-lg">
-          <table className="table w-full rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
+          <table className="table w-full rounded-lg shadow-md bg-gray-100 dark:bg-gray-800 bg-gradient-to-b from-rose-50 to-purple-50">
             <thead>
               <tr className="bg-rose-900 text-white dark:bg-gray-700 dark:text-white">
                 <th className="text-center py-3">#</th>

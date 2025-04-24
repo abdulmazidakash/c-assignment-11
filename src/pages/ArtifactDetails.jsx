@@ -9,7 +9,7 @@ import {
 import { MdCategory, MdPerson } from "react-icons/md";
 import { BsCalendar2Check, BsGeoAlt } from "react-icons/bs";
 import { AuthContext } from "../providers/AuthProvider";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Spinner from "../components/Spinner";
 

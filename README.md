@@ -60,7 +60,7 @@ The following packages are required for the application to function properly:
 - `react`, `react-dom` - Core React library  
 - `react-countup` - Animated counting effect  
 - `react-fast-marquee` - Marquee scrolling effect  
-- `react-helmet` - SEO metadata management  
+- `react-helmet-async` - SEO metadata management  
 - `react-hot-toast` - Notifications and toast messages  
 - `react-icons` - Icon library  
 - `react-router-dom` - Routing for React  

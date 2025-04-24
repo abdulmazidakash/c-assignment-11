@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { FaSave } from "react-icons/fa";
 

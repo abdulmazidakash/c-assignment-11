@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
-import { Helmet } from "react-helmet";
 import { AuthContext } from "../providers/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { Typewriter } from "react-simple-typewriter";
 import Spinner from "../components/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const LikedArtifacts = () => {
   const axiosSecure = useAxiosSecure();
@@ -62,7 +62,7 @@ const LikedArtifacts = () => {
       <div className="overflow-x-auto">
         <table className="table w-full rounded-lg shadow-md bg-gradient-to-b from-rose-50 to-purple-50 dark:bg-gray-800">
           <thead>
-            <tr className="bg-rose-900 text-gray-900 dark:bg-gray-700 dark:text-white">
+            <tr className="bg-rose-900 text-white dark:bg-gray-700 dark:text-white">
               <th className="text-center">#</th>
               <th>Image</th>
               <th>Name</th>
@@ -74,7 +74,7 @@ const LikedArtifacts = () => {
           <tbody className="dark:bg-gray-800">
             {artifacts.map((artifact, index) => (
               <tr
-                key={artifact.artifact.id}
+                key={artifact.artifact._id}
                 className="hover:bg-gray-300 dark:hover:bg-gray-600 transition"
               >
                 <td className="text-center font-bold">{index + 1}</td>

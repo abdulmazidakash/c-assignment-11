@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineInfoCircle, AiFillHeart } from "react-icons/ai";
