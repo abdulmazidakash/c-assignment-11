@@ -1,6 +1,6 @@
 const Spinner = () => {
 	return (
-	  <div className="flex items-center justify-center min-h-screen bg-base-100 dark:bg-base-900">
+	  <div className="flex items-center justify-center min-h-screen bg-base-100 dark:bg-gray-900">
 		<div className="relative w-24 h-24">
 		  {/* Outer Ring */}
 		  <div

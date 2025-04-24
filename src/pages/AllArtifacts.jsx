@@ -84,7 +84,7 @@ function AllArtifacts() {
       {loading ? (
         <Spinner />
       ) : sortedArtifacts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 dark:bg-gray-800">
           {sortedArtifacts.map((artifact) => (
             <div
               key={artifact._id}
