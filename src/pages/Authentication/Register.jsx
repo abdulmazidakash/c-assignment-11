@@ -107,7 +107,7 @@ const Registration = () => {
           <form onSubmit={handleSignUp}>
             <div className="mt-4">
               <label
-                className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                className="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
                 htmlFor="name"
               >
                 Username
@@ -116,14 +116,14 @@ const Registration = () => {
                 id="name"
                 autoComplete="name"
                 name="name"
-                className="block w-full px-4 py-2 text-gray-700 bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
+                className="block w-full px-4 py-2 text-gray-700 bg-white dark:text-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
                 type="text"
               />
             </div>
 
             <div className="mt-4">
               <label
-                className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                className="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
                 htmlFor="photo"
               >
                 Photo URL
@@ -132,14 +132,14 @@ const Registration = () => {
                 id="photo"
                 autoComplete="photo"
                 name="photo"
-                className="block w-full px-4 py-2 text-gray-700 bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
+                className="block w-full px-4 py-2 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
                 type="text"
               />
             </div>
 
             <div className="mt-4">
               <label
-                className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                className="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
                 htmlFor="LoggingEmailAddress"
               >
                 Email Address
@@ -148,7 +148,7 @@ const Registration = () => {
                 id="LoggingEmailAddress"
                 autoComplete="email"
                 name="email"
-                className="block w-full px-4 py-2 text-gray-700 bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
+                className="block w-full px-4 py-2 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
                 type="email"
               />
             </div>
@@ -156,7 +156,7 @@ const Registration = () => {
             <div className="mt-4">
               <div className="flex justify-between">
                 <label
-                  className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200"
+                  className="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
                   htmlFor="loggingPassword"
                 >
                   Password
@@ -167,7 +167,7 @@ const Registration = () => {
                 id="loggingPassword"
                 autoComplete="current-password"
                 name="password"
-                className="block w-full px-4 py-2 text-gray-700 bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
+                className="block w-full px-4 py-2 text-gray-700 dark:text-white bg-white dark:bg-gray-700 border rounded-lg focus:border-blue-400 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600"
                 type="password"
               />
             </div>
@@ -175,7 +175,7 @@ const Registration = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-rose-900 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50 dark:bg-rose-700 dark:hover:bg-gray-600"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-rose-900 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50  dark:hover:bg-gray-600"
               >
                 Sign Up
               </button>
