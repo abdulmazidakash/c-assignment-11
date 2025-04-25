@@ -7,6 +7,10 @@ Artifact Atlas is an interactive web platform for exploring and managing histori
 ## Live Site  
 🔗 [Artifact Atlas Live Site](https://assignment-11-artifact-atlas.netlify.app)  
 
+## User Credentials
+- gmail: user@gmail.com
+- password: #User1
+
 ## Features  
 - **Explore Artifacts**: Browse through a collection of artifacts with detailed information and images.  
 - **Search Functionality**: Use the search bar to quickly find artifacts by name.  
