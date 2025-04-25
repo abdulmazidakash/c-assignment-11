@@ -136,5 +136,5 @@ npm run preview
 
 ---
 
-## 🎯 **You're All Set!**  
+## 🎯 **You are All Set!**  
 Now you can start developing and testing the project locally. 🚀 
